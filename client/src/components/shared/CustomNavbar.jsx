@@ -52,7 +52,7 @@ const CustomNavbar = () => {
             </Button>
             <Image
               loading="lazy"
-              src="/assets/scrool/arrowo.png"
+              src="/assets/scrool/arrowO.png"
               width={39}
               height={39}
               alt="arrow"
