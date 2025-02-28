@@ -11,6 +11,7 @@ import HeroStar from "../atoms/HeroStar";
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(false); // New state for laptop screens
   const imageRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const HeroSection = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -30,6 +32,7 @@ const HeroSection = () => {
         imageRef.current.style.width = `${containerWidth}px`;
       }
       setIsMobile(window.innerWidth < 768);
+      setIsLaptop(window.innerWidth >= 768 && window.innerWidth <= 1440); // Check for laptop screen size
     };
 
     window.addEventListener("resize", handleResize);
@@ -41,18 +44,23 @@ const HeroSection = () => {
   useEffect(() => {
     if (imageRef.current) {
       gsap.to(imageRef.current, {
-        scaleX: () => Math.min(1 + scrollY / 1.5, 5.1),
-        scaleY: () => Math.min(1 + scrollY / 1.5, 3.6),
-        y: () => Math.max(-scrollY / 1, -200),
+        scaleX: () =>
+          Math.min(1 + scrollY / (isLaptop ? 2 : 1.5), isLaptop ? 4.5 : 5.1),
+        scaleY: () =>
+          Math.min(1 + scrollY / (isLaptop ? 2 : 1.5), isLaptop ? 2.5 : 3.6),
+        y: () => Math.max(-scrollY / 1, isLaptop ? -150 : -200), // Adjust y positioning for laptops
         duration: 1.5,
         ease: "power3.out",
       });
     }
-  }, [scrollY]);
+  }, [scrollY, isLaptop]);
 
-  const imageHeight = Math.min(200 + scrollY / 2, 200);
-  const imageWidth = Math.min(200 + scrollY / 2, 500);
-  const contentOffset = Math.min(scrollY * 1.5, 450);
+  const imageHeight = Math.min(200 + scrollY / (isLaptop ? 3 : 2), 200); // Slower scale on laptop
+  const imageWidth = Math.min(
+    200 + scrollY / (isLaptop ? 3 : 2),
+    isLaptop ? 400 : 500
+  );
+  const contentOffset = Math.min(scrollY * (isLaptop ? 1 : 1.5), 450); // Slower content movement on laptop
 
   return (
     <>
@@ -72,7 +80,7 @@ const HeroSection = () => {
               <span className="text-[48px] md:text-[70px] lg:text-[100px] xl:text-[110px] font-outfit font-bold leading-none text-[#575757]">
                 Design Studio
               </span>
-              <div className=" bottom-32 md:bottom-48 lg:bottom-64 left-0 right-0 flex mt-32 md:mt-12 ml-[-24px] md:ml-0">
+              <div className="bottom-32 md:bottom-48 lg:bottom-64 left-0 right-0 flex mt-32 md:mt-12 ml-[-24px] md:ml-0">
                 <div className="flex px-4 py-1 rounded-[40.994px] bg-white">
                   <div className="rounded-[22.873px]">
                     <Image
@@ -112,10 +120,13 @@ const HeroSection = () => {
                 height: `${imageHeight}px`,
                 width: `${imageWidth}px`,
                 transformOrigin: "top left",
-                bottom: `${Math.max(-scrollY / 1, -520)}px`,
+                bottom: `${Math.max(-scrollY / 1, isLaptop ? -420 : -520)}px`, // Adjust bottom position for laptops
                 zIndex: -1,
                 opacity: Math.min(1 + scrollY / 100, 1),
-                transform: `scale(${Math.min(1 + scrollY / 200, 2.2)})`,
+                transform: `scale(${Math.min(
+                  1 + scrollY / 200,
+                  isLaptop ? 1.8 : 2.2
+                )})`, // Smaller scale on laptops
                 transition: "opacity 0.5s ease, transform 0.5s ease",
                 borderRadius: `10%`,
               }}
@@ -135,7 +146,9 @@ const HeroSection = () => {
       </div>
       <div
         style={{
-          marginTop: isMobile ? "0" : `${Math.max(-scrollY / 1, 812)}px`, // Skip marginTop on mobile
+          marginTop: isMobile
+            ? "0"
+            : `${Math.max(-scrollY / 1, isLaptop ? 700 : 812)}px`, // Adjust margin for laptops
         }}
       >
         <BrandingHero />

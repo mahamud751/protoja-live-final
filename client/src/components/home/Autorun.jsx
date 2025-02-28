@@ -1,23 +1,24 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const servicesList = [
   "UX Design",
   "User Testing",
   "Product Prototype",
   "Mobile UI",
-  "Software UI design",
-  "Web app design",
-  "Interaction design",
+  "Software UI Design",
+  "Web App Design",
+  "Interaction Design",
 ];
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Autorun = () => {
-  const sectionRefs = useRef([null]);
+  const sectionRefs = useRef([]);
 
   useEffect(() => {
     sectionRefs.current.forEach((section, index) => {
@@ -33,7 +34,7 @@ const Autorun = () => {
           scrub: 1, // Smooth scrubbing effect
           markers: false, // Disable markers for production
         },
-        height: "50vh", // Expand the section to full viewport height
+        height: "50vh", // Expand the section (adjusted from original 50vh)
         duration: 1.5,
         ease: "power1.out",
       });
@@ -45,215 +46,127 @@ const Autorun = () => {
     };
   }, []);
 
+  const sections = [
+    {
+      id: "section1",
+      bgColor: "bg-[#C3ABFF]",
+      title: "UI UX Design",
+      imgSrc: "/assets/service/1.png",
+    },
+    {
+      id: "section2",
+      bgColor: "bg-[#272727]",
+      title: "Visual Identity",
+      imgSrc: "/assets/service/1.png",
+      textColor: "text-white",
+    },
+    {
+      id: "section3",
+      bgColor: "bg-[#F76F00]",
+      title: "Mobile App Design",
+      imgSrc: "/assets/scrool/4.png",
+    },
+    {
+      id: "section4",
+      bgColor: "bg-[#FFD580]",
+      title: "Website",
+      imgSrc: "/assets/service/3.png",
+    },
+    {
+      id: "section5",
+      bgColor: "bg-[#fff]",
+      title: "Web App Design",
+      imgSrc: "/assets/scrool/1.png",
+    },
+    {
+      id: "section6",
+      bgColor: "bg-[#86FF80]",
+      title: "SaaS Design",
+      imgSrc: "/assets/service/3.png",
+    },
+  ];
+
   return (
     <div className="text-black bg-black h-full pb-40">
-      <p className="text-white text-center py-40 text-2xl">What we offer</p>
-      <section
-        ref={(el) => (sectionRefs.current[0] = el)}
-        id="section1"
-        className="bg-[#C3ABFF] z-0 overflow-hidden"
-        style={{ height: "55vh" }}
+      <motion.p
+        className="text-white text-center py-40 text-2xl md:text-4xl font-bold"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold">UI UX Design</h1>
-            <p className="sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-60 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
+        What We Offer
+      </motion.p>
+
+      {sections.map((section, index) => (
+        <section
+          key={section.id}
+          ref={(el) => (sectionRefs.current[index] = el)}
+          id={section.id}
+          className={`${section.bgColor} z-${index} overflow-hidden`}
+          style={{ height: "55vh" }} // Initial height
+        >
+          <div className="flex flex-col md:flex-row justify-between p-12 h-full">
+            <motion.div
+              className="md:w-1/2"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
+              <h1
+                className={`text-2xl md:text-9xl font-bold ${
+                  section.textColor || "text-black"
+                }`}
+              >
+                {section.title}
+              </h1>
+              <p
+                className={`sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px] ${
+                  section.textColor || "text-black"
+                }`}
+              >
+                Our product design services focus on creating intuitive and
+                aesthetically pleasing products that resonate with your audience
+                and stand out in the market.
               </p>
-            ))}
+            </motion.div>
+
+            <motion.div
+              className="sm:mt-0 md:mt-60 md:w-1/4"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              {servicesList.map((service, idx) => (
+                <p
+                  key={idx}
+                  className={`text-xl ${section.textColor || "text-black"}`}
+                >
+                  {service}
+                </p>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="mt-8 md:mt-0 md:w-1/4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
+              <Image
+                loading="lazy"
+                src={section.imgSrc}
+                alt={`${section.title} visualization`}
+                width={450}
+                height={400}
+                className="w-[450px] h-[400px] object-cover"
+              />
+            </motion.div>
           </div>
-          <div className="mt-8 md:mt-0 md:w-1/4">
-            <Image
-              loading="lazy"
-              src="/assets/service/1.png"
-              alt="Product design visualization"
-              width={1000}
-              height={1000}
-              className="w-[450px] h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
-      <section
-        ref={(el) => (sectionRefs.current[1] = el)}
-        id="section2"
-        className="bg-[#272727] z-1 overflow-hidden"
-        style={{ height: "55vh" }}
-      >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full text-white">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold text-white">
-              Visual Identity
-            </h1>
-            <p className="sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-60 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
-              </p>
-            ))}
-          </div>
-          <div className="mt-8 md:mt-0 md:w-1/4">
-            <Image
-              loading="lazy"
-              src="/assets/service/1.png"
-              alt="Product design visualization"
-              width={1000}
-              height={1000}
-              className="w-[450px] h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
-      <section
-        ref={(el) => (sectionRefs.current[2] = el)}
-        id="section3"
-        className="bg-[#F76F00] z-2 overflow-hidden"
-        style={{ height: "55vh" }}
-      >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold">
-              Mobile app Design
-            </h1>
-            <p className="sm:mt-5 md:mt-20 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-72 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
-              </p>
-            ))}
-          </div>
-          <Image
-            loading="lazy"
-            src="/assets/scrool/4.png"
-            alt="Product design visualization"
-            width={1000}
-            height={1000}
-            className="w-[450px] h-[400px]"
-          />
-        </div>
-      </section>
-      <section
-        ref={(el) => (sectionRefs.current[3] = el)}
-        id="section4"
-        className="bg-[#FFD580] z-3 overflow-hidden "
-        style={{ height: "55vh" }}
-      >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold ">Website</h1>
-            <p className="sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-60 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
-              </p>
-            ))}
-          </div>
-          <div className="mt-8 md:mt-0 md:w-1/4">
-            <Image
-              loading="lazy"
-              src="/assets/service/3.png"
-              alt="Product design visualization"
-              width={1000}
-              height={1000}
-              className="w-[450px] h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
-      <section
-        ref={(el) => (sectionRefs.current[4] = el)}
-        id="section5"
-        className="bg-[#fff] z-3 overflow-hidden "
-        style={{ height: "55vh" }}
-      >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold">Web App Design</h1>
-            <p className="sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-60 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
-              </p>
-            ))}
-          </div>
-          <div className="mt-8 md:mt-0 md:w-1/4">
-            <Image
-              loading="lazy"
-              src="/assets/scrool/1.png"
-              alt="Product design visualization"
-              width={1000}
-              height={1000}
-              className="w-[450px] h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
-      <section
-        ref={(el) => (sectionRefs.current[5] = el)}
-        id="section6"
-        className="bg-[#86FF80] z-3 overflow-hidden "
-        style={{ height: "55vh" }}
-      >
-        <div className="flex flex-col md:flex-row justify-between p-12 h-full">
-          <div className="md:w-1/2">
-            <h1 className="text-2xl md:text-9xl font-bold">Saas Design</h1>
-            <p className="sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px]">
-              Our product design services focus on creating intuitive and
-              aesthetically pleasing products that resonate with your audience
-              and stand out in the market.
-            </p>
-          </div>
-          <div className="sm:mt-0 md:mt-60 md:w-1/4">
-            {servicesList.map((service, index) => (
-              <p key={index} className="text-xl">
-                {service}
-              </p>
-            ))}
-          </div>
-          <div className="mt-8 md:mt-0 md:w-1/4">
-            <Image
-              loading="lazy"
-              src="/assets/service/3.png"
-              alt="Product design visualization"
-              width={1000}
-              height={1000}
-              className="w-[450px] h-[400px]"
-            />
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
     </div>
   );
 };
