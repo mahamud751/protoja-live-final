@@ -81,7 +81,7 @@ const Add_Blog = () => {
         photos: list,
       };
 
-      await axios.post("http://localhost:8002/api/blogs", product);
+      await axios.post("https://api.protoja.com/api/blogs", product);
       MySwal.fire("Good job!", "successfully added", "success");
       formRef.current.reset();
       setContents([{ title: "", description: "", images: [] }]); // Reset contents

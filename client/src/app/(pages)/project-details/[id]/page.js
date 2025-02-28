@@ -17,7 +17,7 @@ const Page = ({ params: paramsPromise }) => {
 
   const fetchBlogs = async () => {
     const response = await axios
-      .get("http://localhost:8002/api/product")
+      .get("https://api.protoja.com/api/product")
       .catch((err) => {
         console.error("Error fetching projects:", err);
       });

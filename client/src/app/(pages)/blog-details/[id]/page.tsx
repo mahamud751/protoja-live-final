@@ -15,7 +15,7 @@ const Page = ({ params: paramsPromise }) => {
   const [blogs, setBlogs] = useState();
   const fetchBlogs = async () => {
     const response = await axios
-      .get("http://localhost:8002/api/blogs")
+      .get("https://api.protoja.com/api/blogs")
       .catch((err) => {});
     //@ts-ignore
     setBlogs(response.data);

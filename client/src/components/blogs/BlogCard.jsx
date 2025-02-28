@@ -17,7 +17,7 @@ export default function BlogCard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8002/api/blogs");
+        const response = await axios.get("https://api.protoja.com/api/blogs");
         setBlogData(response.data);
         setFilteredData(response.data);
       } catch (error) {

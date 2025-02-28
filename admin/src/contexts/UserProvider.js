@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
     try {
       // Make your API call here to login the user using Axios
       const response = await axios.post(
-        "http://localhost:8002/api/users/login",
+        "https://api.protoja.com/api/users/login",
         { email, password }
       );
 

@@ -11,7 +11,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8002/api/product");
+        const response = await axios.get("https://api.protoja.com/api/product");
         setData(response.data);
         filterProjects("tab1", response.data); // Initially show featured data
       } catch (error) {
@@ -49,7 +49,11 @@ const Projects = () => {
             className={`flex items-center justify-between sm:justify-start py-2 sm:py-4 focus:outline-none uppercase border-b sm:border-none sm:hover:text-gray-400 transition-colors`}
             onClick={() => openTab("tab1")}
           >
-            <h1 className={`${activeTab === "tab1" ? "text-gray-400" : ""} text-sm sm:text-lg lg:text-xl`}>
+            <h1
+              className={`${
+                activeTab === "tab1" ? "text-gray-400" : ""
+              } text-sm sm:text-lg lg:text-xl`}
+            >
               Featured
             </h1>
             <h1
@@ -64,7 +68,11 @@ const Projects = () => {
             className={`flex items-center justify-between sm:justify-start py-2 sm:py-4 focus:outline-none uppercase border-b sm:border-none sm:hover:text-gray-400 transition-colors`}
             onClick={() => openTab("tab2")}
           >
-            <h1 className={`${activeTab === "tab2" ? "text-gray-400" : ""} text-sm sm:text-lg lg:text-xl`}>
+            <h1
+              className={`${
+                activeTab === "tab2" ? "text-gray-400" : ""
+              } text-sm sm:text-lg lg:text-xl`}
+            >
               All Projects
             </h1>
             <h1
@@ -79,7 +87,11 @@ const Projects = () => {
             className={`flex items-center justify-between sm:justify-start py-2 sm:py-4 focus:outline-none uppercase border-b sm:border-none sm:hover:text-gray-400 transition-colors`}
             onClick={() => openTab("tab3")}
           >
-            <h1 className={`${activeTab === "tab3" ? "text-gray-400" : ""} text-sm sm:text-lg lg:text-xl`}>
+            <h1
+              className={`${
+                activeTab === "tab3" ? "text-gray-400" : ""
+              } text-sm sm:text-lg lg:text-xl`}
+            >
               Industries
             </h1>
             <h1
@@ -87,19 +99,35 @@ const Projects = () => {
                 activeTab === "tab3" ? "text-gray-400" : ""
               }`}
             >
-              {filteredData.filter((project) => project.category === "Industries").length}
+              {
+                filteredData.filter(
+                  (project) => project.category === "Industries"
+                ).length
+              }
             </h1>
           </button>
         </div>
 
         {/* Tab Content */}
-        <div className={`tabcontent p-2 sm:p-4 ${activeTab === "tab1" ? "" : "hidden"}`}>
+        <div
+          className={`tabcontent p-2 sm:p-4 ${
+            activeTab === "tab1" ? "" : "hidden"
+          }`}
+        >
           <AllProjects projects={filteredData} />
         </div>
-        <div className={`tabcontent p-2 sm:p-4 ${activeTab === "tab2" ? "" : "hidden"}`}>
+        <div
+          className={`tabcontent p-2 sm:p-4 ${
+            activeTab === "tab2" ? "" : "hidden"
+          }`}
+        >
           <AllProjects projects={filteredData} />
         </div>
-        <div className={`tabcontent p-2 sm:p-4 ${activeTab === "tab3" ? "" : "hidden"}`}>
+        <div
+          className={`tabcontent p-2 sm:p-4 ${
+            activeTab === "tab3" ? "" : "hidden"
+          }`}
+        >
           <AllProjects projects={filteredData} />
         </div>
       </div>
