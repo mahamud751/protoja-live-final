@@ -4,9 +4,13 @@ import BlogDetailsHero from "@/components/blogDetails/BlogDetailsHero";
 import LatestBlogs from "@/components/blogDetails/LatestBlogs";
 import Contact from "@/components/home/Contact";
 import UseFetch from "../../../../hook/useFetch";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-const Page = ({ params: { id } }) => {
+const Page = ({ params: paramsPromise }) => {
+  // Unwrap params using React.use()
+  const params = React.use(paramsPromise);
+  //@ts-ignore
+  const { id } = params; // Access id after unwrapping
   const { data: blogMain } = UseFetch(`blogs/${id}`);
   const [blogs, setBlogs] = useState();
   const fetchBlogs = async () => {
