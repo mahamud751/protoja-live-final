@@ -32,7 +32,7 @@ export default function Approach() {
     };
   }, []);
   return (
-    <div className="bg-neutral-800 mt-60 p-3 md:p-20" ref={ref}>
+    <div className="bg-neutral-800 mt-60 p-4 md:p-20" ref={ref}>
       <div className="flex justify-center pt-32">
         <button className="bg-white w-[120px] rounded-[1440px] text-black p-1">
           Our approach
@@ -77,7 +77,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -101,7 +101,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -125,7 +125,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -149,7 +149,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -173,7 +173,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -197,7 +197,7 @@ export default function Approach() {
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[450px]"
+              className="h-[500px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"

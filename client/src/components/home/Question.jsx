@@ -39,7 +39,9 @@ const Question = ({ header }) => {
                 isVisible ? "animate__animated animate__fadeInLeft" : ""
               }`}
             >
-              <p className="text-black text-3xl md:text-4xl lg:text-5xl">{header}</p>
+              <p className="text-black text-3xl md:text-4xl lg:text-5xl">
+                {header}
+              </p>
               <p className="text-black font-light text-xl md:text-2xl mt-2">
                 Let's talk, no strings attached
               </p>
@@ -53,7 +55,7 @@ const Question = ({ header }) => {
                       Book a free Consultation today!
                     </button>
                   </div>
-                  <div className="ml-4">
+                  <div>
                     <Image
                       loading="lazy"
                       src="/assets/scrool/arrowo.png"
@@ -90,17 +92,22 @@ const Question = ({ header }) => {
               <div className="text-black border-b border-[#D16004] mt-8 md:mt-10"></div>
 
               <div className="flex mt-8 md:mt-20 items-center justify-between">
-                <button className="w-[100%] bg-[#272727] py-2 rounded-[1440px]">
-                  <span className="text-[#F76F00] text-sm md:text-base">Ask Questions</span>
-                </button>
-                <div className="flex items-center justify-center px-2.5 bg-[#272727] rounded-2xl ml-4 h-[33px] w-[33px]">
+                <div>
+                  <button className="w-[224px] bg-[#272727] py-2 rounded-[1440px]">
+                    <span className="text-[#F76F00] text-sm md:text-base">
+                      Ask Questions
+                    </span>
+                  </button>
+                </div>
+                {/* Fully rounded button for WhatsApp */}
+                <div className="flex items-center justify-center bg-[#272727] rounded-full h-[40px] w-[40px]">
                   <Image
                     loading="lazy"
                     src="/assets/scrool/whatsapp.png"
                     width={220}
                     height={220}
                     alt="whatsapp"
-                    className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]"
+                    className="w-[25px] h-[25px]"
                   />
                 </div>
               </div>

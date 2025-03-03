@@ -122,87 +122,15 @@ function Footer() {
           <FooterLinkSection title="QUICK LINK" links={quickLinks} />
           <FooterLinkSection title="Review" links={reviews} />
         </div>
-        <div className="relative mb-12">
-          <h1 className="text-center text-[100px] sm:text-[150px] md:text-[200px] lg:text-[300px] pb-12 font-extrabold tracking-tight leading-none protoja-3d">
-            {"Protoja".split("").map((letter, index) => (
-              <span key={index}>{letter}</span>
-            ))}
-          </h1>
-          <style jsx>{`
-            .protoja-3d {
-              color: transparent;
-              background: linear-gradient(
-                45deg,
-                #ffffff,
-                #d1d1d1
-              ); /* White to light gray */
-              -webkit-background-clip: text;
-              background-clip: text;
-              text-shadow: 4px 4px 0 #333333, 8px 8px 0 #1a1a1a,
-                12px 12px 0 #0a0a0a, 16px 16px 20px rgba(0, 0, 0, 0.8);
-              transform: perspective(500px) rotateX(15deg);
-              letter-spacing: -0.05em;
-              display: flex;
-              justify-content: center;
-              gap: 0.1em; /* Space between letters */
-              position: relative;
-            }
-
-            .protoja-3d::before {
-              content: "Protoja";
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              color: rgba(255, 255, 255, 0.1); /* Subtle white overlay */
-              text-shadow: none;
-              z-index: -1;
-              transform: perspective(500px) rotateX(15deg) translateZ(-20px);
-            }
-
-            /* Per-letter styling with white focus and subtle accents */
-            .protoja-3d span {
-              display: inline-block;
-              position: relative;
-              transition: transform 0.3s ease;
-              color: #ffffff; /* Base white color */
-            }
-
-            .protoja-3d span:nth-child(1) {
-              background: linear-gradient(45deg, #ffffff, #e0e0e0);
-              -webkit-background-clip: text;
-            } /* P */
-            .protoja-3d span:nth-child(2) {
-              background: linear-gradient(45deg, #ffffff, #b0b0b0);
-              -webkit-background-clip: text;
-            } /* r */
-            .protoja-3d span:nth-child(3) {
-              background: linear-gradient(45deg, #ffffff, #e0e0e0);
-              -webkit-background-clip: text;
-            } /* o */
-            .protoja-3d span:nth-child(4) {
-              background: linear-gradient(45deg, #ffffff, #b0b0b0);
-              -webkit-background-clip: text;
-            } /* t */
-            .protoja-3d span:nth-child(5) {
-              background: linear-gradient(45deg, #ffffff, #e0e0e0);
-              -webkit-background-clip: text;
-            } /* o */
-            .protoja-3d span:nth-child(6) {
-              background: linear-gradient(45deg, #ffffff, #b0b0b0);
-              -webkit-background-clip: text;
-            } /* j */
-            .protoja-3d span:nth-child(7) {
-              background: linear-gradient(45deg, #ffffff, #e0e0e0);
-              -webkit-background-clip: text;
-            } /* a */
-
-            .protoja-3d span:hover {
-              transform: translateZ(20px); /* 3D pop-up on hover */
-              text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White glow */
-            }
-          `}</style>
+        <div className="relative">
+          <Image
+            src={"/assets/footer.png"}
+            alt="Footer background"
+            priority
+            width={1000}
+            height={1000}
+            className="w-full h-full"
+          />
         </div>
       </div>
       <div className="flex items-center justify-center px-9 pt-7 pb-6 w-full border-t border-solid border-t-neutral-700 max-md:px-5 max-md:max-w-full">

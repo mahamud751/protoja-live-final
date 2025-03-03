@@ -29,18 +29,17 @@ const Autorun = () => {
           trigger: section,
           start: "top top",
           end: "bottom top",
-          pin: true, // Pin the section until the next one is reached
-          pinSpacing: false, // Prevent extra spacing
-          scrub: 1, // Smooth scrubbing effect
-          markers: false, // Disable markers for production
+          pin: true,
+          pinSpacing: false,
+          scrub: 1,
+          markers: false,
         },
-        height: "50vh", // Expand the section (adjusted from original 50vh)
+        height: "50vh",
         duration: 1.5,
         ease: "power1.out",
       });
     });
 
-    // Cleanup ScrollTrigger instances on component unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -88,22 +87,13 @@ const Autorun = () => {
 
   return (
     <div className="text-black bg-black h-full pb-40">
-      <motion.p
-        className="text-white text-center py-40 text-2xl md:text-4xl font-bold"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        What We Offer
-      </motion.p>
-
       {sections.map((section, index) => (
         <section
           key={section.id}
           ref={(el) => (sectionRefs.current[index] = el)}
           id={section.id}
           className={`${section.bgColor} z-${index} overflow-hidden`}
-          style={{ height: "55vh" }} // Initial height
+          style={{ height: "50vh" }} // Initial height
         >
           <div className="flex flex-col md:flex-row justify-between p-12 h-full">
             <motion.div
@@ -114,56 +104,57 @@ const Autorun = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
               <h1
-                className={`text-2xl md:text-9xl font-bold ${
+                className={`text-2xl whitespace-nowrap md:text-9xl font-bold ${
                   section.textColor || "text-black"
                 }`}
               >
                 {section.title}
               </h1>
-              <p
-                className={`sm:mt-5 md:mt-28 sm:text-xl md:text-3xl md:w-[418px] ${
-                  section.textColor || "text-black"
-                }`}
-              >
-                Our product design services focus on creating intuitive and
-                aesthetically pleasing products that resonate with your audience
-                and stand out in the market.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="sm:mt-0 md:mt-60 md:w-1/4"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            >
-              {servicesList.map((service, idx) => (
+              <div className="md:flex justify-between items-center h-96">
                 <p
-                  key={idx}
-                  className={`text-xl ${section.textColor || "text-black"}`}
+                  className={`sm:text-xl md:text-3xl md:w-[418px] ${
+                    section.textColor || "text-black"
+                  }`}
                 >
-                  {service}
+                  Our product design services focus on creating intuitive and
+                  aesthetically pleasing products that resonate with your
+                  audience and stand out in the market.
                 </p>
-              ))}
+                <div>
+                  {servicesList.map((service, idx) => (
+                    <p
+                      key={idx}
+                      className={`font-mono text-xl ${
+                        section.textColor || "text-black"
+                      }`}
+                    >
+                      {service}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
-            <motion.div
-              className="mt-8 md:mt-0 md:w-1/4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            >
-              <Image
-                loading="lazy"
-                src={section.imgSrc}
-                alt={`${section.title} visualization`}
-                width={450}
-                height={400}
-                className="w-[450px] h-[400px] object-cover"
-              />
-            </motion.div>
+            <div>
+              <motion.div
+                className="mt-8 md:mt-0"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              >
+                <div className="min-w-[240px] w-[654px]">
+                  <Image
+                    loading="lazy"
+                    src={section.imgSrc}
+                    alt={`${section.title} visualization`}
+                    width={2000}
+                    height={2000}
+                    className="object-contain"
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
       ))}

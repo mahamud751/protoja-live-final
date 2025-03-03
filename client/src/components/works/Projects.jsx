@@ -43,7 +43,7 @@ const Projects = () => {
 
   return (
     <div>
-      <div className="w-full mt-[60px] sm:mt-[220px]">
+      <div className="w-full mt-[280px]">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-around gap-2 sm:gap-8 px-4 sm:px-0">
           <button
             className={`flex items-center justify-between sm:justify-start py-2 sm:py-4 focus:outline-none uppercase border-b sm:border-none sm:hover:text-gray-400 transition-colors`}

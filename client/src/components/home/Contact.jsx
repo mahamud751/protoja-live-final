@@ -61,7 +61,7 @@ function FormInput({ label, id, type, placeholder, options }) {
         <div className="flex overflow-hidden gap-2 items-center w-full text-lg mt-1 font-semibold leading-none rounded-lg border border-solid bg-zinc-300 bg-opacity-30 border-zinc-300 text-neutral-900">
           <select
             id={id}
-            className="mt-4 bg-transparent border-none outline-none p-2 text-zinc-400"
+            className="bg-transparent border-none outline-none p-3 text-zinc-400"
             aria-label={label}
             defaultValue=""
           >
@@ -91,7 +91,7 @@ function FormInput({ label, id, type, placeholder, options }) {
             type={type}
             id={id}
             placeholder={placeholder}
-            className="mt-4 bg-transparent border-none outline-none p-2"
+            className="mt-8 bg-transparent border-none outline-none p-2"
             aria-label={label}
           />
         </div>
@@ -195,11 +195,6 @@ export default function Contact({ page }) {
                     <button
                       type="submit"
                       className={`flex overflow-hidden justify-center items-center self-start px-6 py-3 mt-11 text-base font-medium tracking-normal leading-7 text-black bg-orange-500 rounded-[100px] max-md:px-5 max-md:mt-10 
-                      ${
-                        isVisible
-                          ? "   animate__animated animate__fadeInUp animate__delay-3s"
-                          : ""
-                      }
                      `}
                     >
                       Send inquiry

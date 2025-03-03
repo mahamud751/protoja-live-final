@@ -128,7 +128,7 @@ const HeroSection = () => {
                   isLaptop ? 1.8 : 2.2
                 )})`, // Smaller scale on laptops
                 transition: "opacity 0.5s ease, transform 0.5s ease",
-                borderRadius: `10%`,
+                borderRadius: "16px", // Fixed border-radius here
               }}
             ></video>
           </div>

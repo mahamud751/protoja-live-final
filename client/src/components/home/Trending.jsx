@@ -47,8 +47,8 @@ export default function Trending() {
             <button className="bg-white w-[100px] sm:w-[120px] rounded-[1440px] text-black p-1 text-sm sm:text-base">
               What's trending
             </button>
-            <Link 
-              href={"/service"} 
+            <Link
+              href={"/service"}
               className="text-sm sm:text-base hover:text-gray-700"
             >
               Service
