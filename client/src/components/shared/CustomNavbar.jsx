@@ -102,7 +102,7 @@ const CustomNavbar = () => {
                 <div>
                   <Image
                     loading="lazy"
-                    src="/assets/scrool/arrowo.png"
+                    src="/assets/scrool/arrowO.png"
                     width={220}
                     height={220}
                     alt="arrow"
