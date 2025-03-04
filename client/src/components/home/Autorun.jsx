@@ -167,12 +167,6 @@ const Autorun = () => {
           </div>
         </section>
       ))}
-      {/* Optional: Additional content to test responsiveness */}
-      <div className="h-[50vh] bg-gray-800 text-white flex items-center justify-center">
-        <p className="text-sm sm:text-lg md:text-xl">
-          This is additional content below the sections.
-        </p>
-      </div>
     </div>
   );
 };
