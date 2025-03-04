@@ -17,12 +17,14 @@ const servicesList = [
   "Interaction Design",
 ];
 
-const Autorun = () => {
+const ServiceOffer = () => {
   const sectionRefs = useRef([]);
 
   useEffect(() => {
     sectionRefs.current.forEach((section, index) => {
       if (!section) return;
+
+      const isLastSection = index === sections.length - 1;
 
       gsap.to(section, {
         scrollTrigger: {
@@ -30,12 +32,12 @@ const Autorun = () => {
           start: "top top",
           end: "bottom top",
           pin: true,
-          pinSpacing: false,
+          pinSpacing: isLastSection ? true : false,
           scrub: 1,
           markers: false,
         },
         height: "50vh",
-        duration: 1.5,
+        duration: 2.5,
         ease: "power1.out",
       });
     });
@@ -86,7 +88,7 @@ const Autorun = () => {
   ];
 
   return (
-    <div className="text-black bg-black h-full pb-40 mt-12">
+    <div className="text-black bg-black h-full">
       {sections.map((section, index) => (
         <section
           key={section.id}
@@ -124,7 +126,9 @@ const Autorun = () => {
                   {servicesList.map((service, idx) => (
                     <p
                       key={idx}
-                      className={`text-xl ${section.textColor || "text-black"}`}
+                      className={`font-mono text-xl ${
+                        section.textColor || "text-black"
+                      }`}
                     >
                       {service}
                     </p>
@@ -160,4 +164,4 @@ const Autorun = () => {
   );
 };
 
-export default Autorun;
+export default ServiceOffer;
