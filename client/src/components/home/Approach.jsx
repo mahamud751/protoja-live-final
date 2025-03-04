@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Box from "@mui/material/Box";
@@ -14,8 +14,21 @@ export default function Approach() {
   const firstRowImageRefs = useRef([]); // Refs for first row images
   const secondRowImageRefs = useRef([]); // Refs for second row images
   const containerRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState(0); // Track window width
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize(); // Set initial width
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
+    if (!windowWidth) return; // Wait for window width to be set
+
     // Animation logic for the first row
     const firstRowImages = firstRowImageRefs.current;
     const secondRowImages = secondRowImageRefs.current;
@@ -24,10 +37,10 @@ export default function Approach() {
       const totalImages = images.length; // 3 images
       const centerIndex = Math.floor(totalImages / 2); // Center image (index 1)
 
-      // Get the container width dynamically
+      // Calculate image width and spacing dynamically
       const containerWidth = containerRef.current.offsetWidth;
-      const imageWidth = 500; // Fixed width of each image
-      const spacing = 100; // Fixed spacing between images
+      const imageWidth = Math.min(500, windowWidth * 0.3); // Max 500px, 30% of window width
+      const spacing = Math.min(100, windowWidth * 0.05); // Max 100px, 5% of window width
 
       // Initially hide all images except the center one
       gsap.set(images, { opacity: 0, x: 0, scale: 0 });
@@ -52,7 +65,7 @@ export default function Approach() {
           scale: 1,
           x: (index) => {
             const offset = index - centerIndex;
-            return offset * (imageWidth + spacing); // Spread images with fixed spacing
+            return offset * (imageWidth + spacing); // Spread images with dynamic spacing
           },
           duration: 1,
           ease: "power2.out",
@@ -71,7 +84,7 @@ export default function Approach() {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [windowWidth]); // Re-run animations when window width changes
 
   // Helper to set refs for each image in a row
   const setImageRef = (rowRefs) => (el) => {
@@ -153,14 +166,14 @@ export default function Approach() {
         ref={containerRef}
         sx={{
           position: "relative",
-          height: "1200px", // Increased height to accommodate two rows
+          height: windowWidth > 1440 ? "1000px" : "1200px", // Adjust height for large screens
           width: "100%", // Full width of the section
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          gap: "200px", // Space between the two rows
+          gap: windowWidth > 1440 ? "150px" : "200px", // Adjust gap for large screens
         }}
       >
         {/* First Row */}
@@ -179,14 +192,14 @@ export default function Approach() {
               ref={setImageRef(firstRowImageRefs)}
               style={{
                 position: "absolute",
-                width: "500px", // Increased width for each image
+                width: `${Math.min(500, windowWidth * 0.3)}px`, // Dynamic width
                 textAlign: "center",
               }}
             >
               <Image
                 src={item.src}
-                width={500} // Increased width
-                height={600} // Increased height
+                width={Math.min(500, windowWidth * 0.3)} // Dynamic width
+                height={600} // Fixed height
                 alt="approach"
                 className="rounded-[10px]"
                 style={{ objectFit: "cover" }}
@@ -215,7 +228,7 @@ export default function Approach() {
             justifyContent: "center",
             alignItems: "center",
             width: "100%",
-            marginTop: "300px", // Space between the two rows
+            marginTop: windowWidth > 1440 ? "300px" : "300px", // Adjust margin for large screens
           }}
         >
           {secondRowImageData.map((item, index) => (
@@ -224,14 +237,14 @@ export default function Approach() {
               ref={setImageRef(secondRowImageRefs)}
               style={{
                 position: "absolute",
-                width: "500px", // Increased width for each image
+                width: `${Math.min(500, windowWidth * 0.3)}px`, // Dynamic width
                 textAlign: "center",
               }}
             >
               <Image
                 src={item.src}
-                width={500} // Increased width
-                height={600} // Increased height
+                width={Math.min(500, windowWidth * 0.3)} // Dynamic width
+                height={600} // Fixed height
                 alt="approach"
                 className="rounded-[10px]"
                 style={{ objectFit: "cover" }}
