@@ -73,11 +73,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/6.png"}
+              src={"/assets/new/1.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -97,11 +97,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/1.png"}
+              src={"/assets/new/4.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -121,11 +121,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/3.png"}
+              src={"/assets/new/5.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -145,11 +145,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/4.png"}
+              src={"/assets/new/6.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -169,11 +169,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/9.png"}
+              src={"/assets/new/7.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
@@ -193,11 +193,11 @@ export default function Approach() {
             style={{ position: "relative", minHeight: "450px" }}
           >
             <Image
-              src={"/assets/scrool/6.png"}
+              src={"/assets/new/9.png"}
               width={2000}
               height={1000}
               alt="approch"
-              className="h-[500px] rounded-[10px]"
+              className="h-[450px] rounded-[10px]"
             />
             <Typography
               variant="subtitle1"
