@@ -70,7 +70,7 @@ export default function ProjectShowcase() {
           </p>
           <Link
             href="/contact"
-            className="group flex items-center gap-2 bg-gradient-to-r from-emerald-300 to-sky-400 hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm transition"
+            className="group flex items-center gap-2 bg-gradient-to-r from-emerald-300 to-sky-400 hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm hover:rounded-2xl transition duration-200"
             aria-label="Book a free discovery session"
           >
             <svg
