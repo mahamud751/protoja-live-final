@@ -1,106 +1,33 @@
 import React from "react";
 
-const Slider2 = () => {
-  return (
-    <>
-      <div className="slider h-24 overflow-hidden mx-auto relative w-auto">
-        <div className="slide-track flex w-[calc(250px*14)] animate-scrollRightToLeft">
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-              className="h-24 w-64"
-              alt="slide 1"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-              className="h-24 w-64"
-              alt="slide 2"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-              className="h-24 w-64"
-              alt="slide 3"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
-              className="h-24 w-64"
-              alt="slide 4"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-              className="h-24 w-64"
-              alt="slide 5"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-              className="h-24 w-64"
-              alt="slide 6"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
-              className="h-24 w-64"
-              alt="slide 7"
-            />
-          </div>
+const slideList = [
+  { id: 1, img: '/assets/slider2/one.png' },
+  { id: 2, img: '/assets/slider2/two.png' },
+  { id: 3, img: '/assets/slider2/three.png' },
+  { id: 4, img: '/assets/slider2/four.png' },
+  { id: 5, img: '/assets/slider2/five.png' },
+  { id: 6, img: '/assets/slider2/six.png' },
+  { id: 7, img: '/assets/slider2/seven.png' },
+  { id: 8, img: '/assets/slider2/eight.png' },
+];
 
-          {/* Repeat for continuous scrolling */}
-          <div className="slide">
+const Slider2 = () => {
+  const slides = [...slideList, ...slideList]; 
+
+  return (
+    <div className="overflow-hidden w-full py-10">
+      <div className="flex animate-scrollRightToLeft gap-6 w-[max-content]">
+        {slides.map(({ id, img }) => (
+          <div key={id} className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
             <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-              className="h-24 w-64"
-              alt="slide 8"
+              src={img}
+              alt={`slide ${id}`}
+              className="w-auto h-[300px] object-cover rounded-xl"
             />
           </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-              className="h-24 w-64"
-              alt="slide 9"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-              className="h-24 w-64"
-              alt="slide 10"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png"
-              className="h-24 w-64"
-              alt="slide 11"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-              className="h-24 w-64"
-              alt="slide 12"
-            />
-          </div>
-          <div className="slide">
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-              className="h-24 w-64"
-              alt="slide 13"
-            />
-          </div>
-        </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -59,6 +59,9 @@ export default {
             transform: "rotate(360deg)",
           },
         },
+        'border-dash': {
+          '100%': { 'stroke-dashoffset': '100' },
+        },
       },
 
       animation: {
@@ -70,6 +73,8 @@ export default {
         slideInFromRight: "slideInFromRight 1s ease-out forwards",
         textSpin: "textSpin 20s linear reverse",
         identifier: "identifier 20s linear infinite",
+        ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'border-dash': 'border-dash 4s linear infinite',
       },
     },
   },

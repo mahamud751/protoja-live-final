@@ -1,219 +1,132 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import Logo from "../icons/Logo";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
-import {
-  Home as HomeIcon,
-  Build as ServiceIcon,
-  Work as WorkIcon,
-  Info as AboutIcon,
-  Article as BlogIcon,
-  Menu as MenuIcon,
-  Close as CloseIcon,
-} from "@mui/icons-material";
+import { Menu, X } from "lucide-react"; // You can use any icon library or SVG
 
-const CustomNavbar = () => {
-  const [activeMenu, setActiveMenu] = useState("home"); // Track active bottom nav item
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Track mobile menu state
+const navLinks = ["Home", "Service", "Works", "About", "Blog"];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+export default function Header() {
+  const [active, setActive] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const glassVariants = {
+    initial: { backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(0px)" },
+    scrolled: { backgroundColor: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)" },
   };
 
   return (
-    <>
-      {/* Top Navbar */}
-      <nav className="py-2.5 w-full bg-white shadow-md fixed top-0 z-50 md:sticky md:top-0">
-        <div className="flex flex-wrap justify-between items-center md:px-20 px-4">
-          {/* Always Visible Logo */}
-          <Link href="/" className="flex ms-1 mt-4">
-            <Logo />
-            <div>
+    <header className="fixed top-0 z-50 w-full">
+      <nav className="container flex items-center justify-center h-16 px-4 md:px-8">
+        {/* Left: Logo and Nav */}
+        <motion.div
+          className="flex items-center pl-[4px] pr-3 py-1 rounded-full relative"
+          style={{
+            clipPath:
+              "polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 0 0)",
+            border: "1.5px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 4px 24px 0 rgba(0,0,0,0.10)",
+            height: "36px",
+            minHeight: "36px",
+          }}
+          variants={glassVariants}
+          initial="initial"
+          animate={scrolled ? "scrolled" : "initial"}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <div className="flex items-center gap-x-3 h-full">
+            {/* Logo */}
+            <div className="w-8 h-8 flex items-center justify-center">
               <Image
-                src="/assets/logoName.png"
-                alt="logo"
-                width={74.74}
-                height={21.75}
-                className="ms-1 mt-2"
+                src="/assets/plogo.png"
+                alt="Company logo"
+                width={32}
+                height={32}
+                className="object-contain"
+                priority
               />
             </div>
-          </Link>
 
-          {/* Hamburger Icon for Mobile */}
-          <div className="md:hidden flex items-center">
-            <button onClick={toggleMobileMenu} className="text-black">
-              {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-            </button>
-          </div>
-
-          {/* Collapsible Section (Hidden on Mobile by Default) */}
-          <div
-            className={`${
-              isMobileMenuOpen ? "block" : "hidden"
-            } md:flex w-full md:w-auto items-center justify-between lg:order-1 transition-all duration-300 ease-in-out`}
-          >
-            {/* Navigation Links */}
-            <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 uppercase bg-white md:bg-transparent">
-              <Link
-                href="/"
-                className="block py-2 px-3 text-black md:p-0 md:dark:hover:text-neutral-700 hover:bg-gray-100 md:hover:bg-transparent"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                href="/service"
-                className="block py-2 px-3 text-black md:p-0 md:dark:hover:text-neutral-700 hover:bg-gray-100 md:hover:bg-transparent"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Service
-              </Link>
-              <Link
-                href="/works"
-                className="block py-2 px-3 text-black md:p-0 md:dark:hover:text-neutral-700 hover:bg-gray-100 md:hover:bg-transparent"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Works
-              </Link>
-              <Link
-                href="/about"
-                className="block py-2 px-3 text-black md:p-0 md:dark:hover:text-neutral-700 hover:bg-gray-100 md:hover:bg-transparent"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About Us
-              </Link>
-              <Link
-                href="/blogs"
-                className="block py-2 px-3 text-black md:p-0 md:dark:hover:text-neutral-700 hover:bg-gray-100 md:hover:bg-transparent"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Blog
-              </Link>
+            {/* Desktop Nav Links */}
+            <ul className="hidden md:flex items-center gap-x-1 h-full select-none">
+              {navLinks.map((link) => (
+                <li key={link} className="flex items-center h-full">
+                  <a
+                    href="#"
+                    onClick={() => {
+                      setActive(link);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`font-bold px-3 py-1 rounded-full text-sm transition-all duration-150 flex items-center h-8 ${active === link
+                        ? "bg-white/10 text-white shadow-inner"
+                        : "text-white hover:bg-white/10"
+                      }`}
+                    style={{ lineHeight: "1.75rem" }}
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
 
-            {/* "Let's Work" Button */}
-            <div className="flex items-center lg:order-2 mt-4 md:mt-0 md:ms-8">
-              <div className="flex text-black">
-                <button className="px-2 py-2 bg-orange-500 min-w-[140px] rounded-[100px]">
-                  Let's work
-                </button>
-                <div>
-                  <Image
-                    loading="lazy"
-                    src="/assets/scrool/arrowO.png"
-                    width={220}
-                    height={220}
-                    alt="arrow"
-                    className="w-[39px] h-[39px]"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Mobile Hamburger Button */}
+            <button
+              className="md:hidden ml-2 p-1 rounded-md text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Right: Let's Talk Button */}
+        <a href='#projects' className="inline-flex items-center gap-2 border-2 px-5 h-9 rounded-full relative z-50 hover:rounded-xl transition duration-200 bg-white text-gray-900">
+          <span className="block px-1">Let's Talk</span>
+        </a>
       </nav>
 
-      {/* Bottom Sticky Navigation */}
-      <BottomNavigation
-        showLabels
-        value={activeMenu}
-        onChange={(event, newValue) => setActiveMenu(newValue)}
-        sx={{
-          position: "fixed",
-          height: 80,
-          bottom: "20px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: { xs: "90%", sm: "80%", md: "60%", lg: "50%" },
-          maxWidth: "600px",
-          bgcolor: "#0A0A0A",
-          borderRadius: "30px",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
-          padding: "24px 32px",
-          zIndex: 50,
-          "& .MuiBottomNavigationAction-root": {
-            minWidth: "auto",
-            padding: { xs: "6px 8px", sm: "8px 12px", md: "10px 16px" },
-            margin: "0 4px",
-            borderRadius: "20px",
-            color: "#ffffff",
-            transition: "all 0.3s ease",
-            position: "relative",
-            "&::before": {
-              position: "absolute",
-              top: "50%",
-              right: "-2px",
-              transform: "translateY(-50%)",
-              width: "5px",
-              height: "60%",
-              bgcolor: "white",
-              borderRadius: "2px",
-            },
-            "&:last-child::before": {
-              display: "none",
-            },
-          },
-          "& .Mui-selected": {
-            bgcolor: "#f97316",
-            color: "#ffffff",
-            borderRadius: "20px 40px 0px 40px",
-            marginTop: -5,
-            border: "6px solid white",
-            padding: "4px",
-          },
-          "& .MuiBottomNavigationAction-label": {
-            fontSize: "12px",
-            fontWeight: "bold",
-            textTransform: "uppercase",
-            border: "none",
-            marginTop: "4px",
-          },
-          "& .MuiSvgIcon-root": {
-            fontSize: "16px",
-            color: "white",
-          },
-        }}
-      >
-        <BottomNavigationAction
-          label="Home"
-          value="home"
-          icon={<HomeIcon />}
-          component={Link}
-          href="/"
-        />
-        <BottomNavigationAction
-          label="Service"
-          value="service"
-          icon={<ServiceIcon />}
-          component={Link}
-          href="/service"
-        />
-        <BottomNavigationAction
-          label="Works"
-          value="works"
-          icon={<WorkIcon />}
-          component={Link}
-          href="/works"
-        />
-        <BottomNavigationAction
-          label="About"
-          value="about"
-          icon={<AboutIcon />}
-          component={Link}
-          href="/about"
-        />
-        <BottomNavigationAction
-          label="Blog"
-          value="blog"
-          icon={<BlogIcon />}
-          component={Link}
-          href="/blogs"
-        />
-      </BottomNavigation>
-    </>
+      {/* Mobile Menu - AnimatePresence for smooth mount/unmount */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden bg-[#222222cc] backdrop-blur-md border-t border-gray-700"
+          >
+            <ul className="flex flex-col px-4 py-2 space-y-2 select-none">
+              {navLinks.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      setActive(link);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`block font-bold px-3 py-2 rounded-md text-white transition-colors duration-150 ${active === link
+                        ? "bg-[#6B6B6B]"
+                        : "hover:bg-[#353535]"
+                      }`}
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
-};
-
-export default CustomNavbar;
+}

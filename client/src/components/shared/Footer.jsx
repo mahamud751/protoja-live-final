@@ -1,156 +1,93 @@
-"use client";
-import React from "react";
-import SocialIcon from "./SocialIcon";
-import FooterLinkSection from "./FooterLinkSection";
-import Image from "next/image";
+// components/Footer.js
+import Link from 'next/link';
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import grainImage from "@/assets/images/grain.jpg";
 
-function Footer() {
-  const services = [
-    "UI/UX Design",
-    "Web Design",
-    "Branding",
-    "MVP Development",
-    "SaaS Design",
-    "Mobile App",
-    "Design System",
-  ];
-
-  const quickLinks = [
-    "Home",
-    "Work",
-    "Contact",
-    "Pricing",
-    "Our Process",
-    "Blog",
-  ];
-
-  const reviews = ["Clutch", "Behance", "Dribbble"];
-
-  const socialIcons = [
-    {
-      src: "linkdin",
-      alt: "Social media icon",
-    },
-    {
-      src: "insta",
-      alt: "insta",
-    },
-    {
-      src: "twitter",
-      alt: "twitter",
-    },
-    {
-      src: "youtube",
-      alt: "twitter",
-    },
-    {
-      src: "facebook",
-      alt: "facebook",
-    },
-  ];
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <div className="flex overflow-hidden flex-col pt-24 bg-neutral-900">
-      <div className="flex flex-col self-center px-10 max-w-full w-[1370px] max-md:px-5">
-        <div className="flex flex-wrap gap-5 justify-between items-start pb-3 w-full max-md:max-w-full">
-          <div className="flex flex-col self-stretch">
-            <div className="flex flex-col w-full">
-              <div className="flex flex-col w-full">
-                <div className="flex justify-center items-center pt-px max-w-full w-[114px]">
-                  <div>
-                    <Image
-                      loading="lazy"
-                      src={"/assets/plogo.png"}
-                      alt="Company logo"
-                      width={214}
-                      height={114}
-                      className="object-contain self-stretch my-auto rounded-none aspect-[43.78px] w-[43.78px]"
-                    />
-                  </div>
-                  <div>
-                    <Image
-                      loading="lazy"
-                      src={"/assets/cname.png"}
-                      alt="Company logo"
-                      width={114}
-                      height={114}
-                      className="object-contain self-stretch my-auto rounded-none ms-2"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 w-full text-base leading-6 text-zinc-400">
-                  An Experienced UX Design Studio focusing on crafting
-                  <br />
-                  functional, simple, human-centered digital products for
-                  <br />
-                  future.
-                </div>
-              </div>
-              <button className="flex items-center mt-14 w-full text-base font-medium tracking-normal leading-7 text-black max-md:mt-10">
-                <div className="flex overflow-hidden justify-center items-center self-stretch px-6 py-3 my-auto bg-orange-500 max-w-[400.8px] rounded-[100px] max-md:px-5">
-                  <div className="self-stretch my-auto">Contact us now</div>
-                </div>
-              </button>
+    <footer className="pt-16 pb-8 relative overflow-hidden mt-auto bg-gray-800">
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_70%,transparent)]">
+              <div
+                className="absolute inset-0 -z-30 opacity-5"
+                style={{ backgroundImage: `url(${grainImage.src})` }}
+              ></div>
             </div>
-            <div className="flex justify-center items-center self-start mt-16 max-md:mt-10">
-              <div className="flex flex-col items-start self-stretch pr-3.5 my-auto min-h-[36px] w-[50px]">
-                <div className="flex justify-center items-center pr-3 pl-3 w-9 h-9 bg-orange-500 min-h-[36px] rounded-[100px]">
-                  <div className="flex flex-col flex-1 shrink self-stretch pt-1.5 pb-2 my-auto w-full basis-0">
-                    <Image
-                      loading="lazy"
-                      src={"/assets/arrow7.png"}
-                      alt="Company deck icon"
-                      width={114}
-                      height={114}
-                      className="object-contain w-full aspect-[0.81]"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col self-stretch my-auto font-medium w-[168px]">
-                <div className="w-full text-2xl leading-none text-white">
-                  Company Deck
-                </div>
-                <div className="w-full text-sm leading-7 text-zinc-500">
-                  PDF, 3 MB
-                </div>
-              </div>
+      <div className="container mx-auto px-6 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+          <div>
+            <h2 className="text-5xl font-bold mb-6">Let's Talk</h2>
+            <div className="space-y-2">
+              <p className="text-xl hover:text-white/50 text-white/60 transition-colors">
+                <a href="mailto:hey@clay.global">hey@protoja.studio</a>
+              </p>
+              <p className="text-xl hover:text-white/50 text-white/60 transition-colors">
+                <a href="tel:+14157966262">+1 415 796 6262</a>
+              </p>
             </div>
           </div>
 
-          <FooterLinkSection title="Services" links={services} />
-          <FooterLinkSection title="QUICK LINK" links={quickLinks} />
-          <FooterLinkSection title="Review" links={reviews} />
-        </div>
-        <div className="relative">
-          <Image
-            src={"/assets/footer.png"}
-            alt="Footer background"
-            priority
-            width={1000}
-            height={1000}
-            className="w-full h-full"
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-center px-9 pt-7 pb-6 w-full border-t border-solid border-t-neutral-700 max-md:px-5 max-md:max-w-full">
-        <div className="flex overflow-hidden flex-none md:flex-1  shrink justify-between items-center self-stretch px-10 my-auto w-full basis-0 max-w-[1370px] min-w-[240px] max-md:px-5 max-md:max-w-full">
-          <div className="flex flex-wrap flex-1 shrink gap-5 justify-between self-stretch py-2.5 my-auto w-full basis-0  max-md:max-w-full">
-            <div className="my-auto text-base leading-none text-zinc-400">
-              <div className="w-full">
-                © 2018-2025, Protoja Studio, All Rights Reserved.
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              <div className="space-y-4">
+                <Link href="/work" className="block text-lg hover:text-white/50 transition-colors">Work</Link>
+                <Link href="/services" className="block text-lg hover:text-white/50 transition-colors">Services</Link>
+                <Link href="/blog" className="block text-lg hover:text-white/50 transition-colors">Blog</Link>
+              </div>
+              <div className="space-y-4">
+                <Link href="/clients" className="block text-lg hover:text-white/50 transition-colors">Clients</Link>
+                <Link href="/about" className="block text-lg hover:text-white/50 transition-colors">About</Link>
+                <Link href="/contact" className="block text-lg hover:text-white/50 transition-colors">Contact</Link>
               </div>
             </div>
-            <div className="flex gap-3 items-center">
-              {socialIcons.map((icon, index) => (
-                <SocialIcon key={index} src={icon.src} alt={icon.alt} />
-              ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <h3 className="font-bold text-lg mb-2">San Francisco</h3>
+                <p className="text-white/30">300 Broadway,</p>
+                <p className="text-white/30">San Francisco, CA 94133</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">New York</h3>
+                <p className="text-white/30">148 Lafayette St,</p>
+                <p className="text-white/30">New York, NY 10013</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-lg mb-2">Austin</h3>
+                <p className="text-white/30">600 Congress Ave,</p>
+                <p className="text-white/30">Austin, TX 78701</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 border-t border-white/20">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8">
+            <nav className="flex gap-4 mb-6 md:mb-0">
+              <Link href="#" aria-label="Facebook">
+                <Facebook className="text-white hover:text-gray-300 transition-colors" />
+              </Link>
+              <Link href="#" aria-label="Twitter">
+                <Twitter className="text-white hover:text-gray-300 transition-colors" />
+              </Link>
+              <Link href="#" aria-label="Instagram">
+                <Instagram className="text-white hover:text-gray-300 transition-colors" />
+              </Link>
+              <Link href="#" aria-label="LinkedIn">
+                <Linkedin className="text-white hover:text-gray-300 transition-colors" />
+              </Link>
+            </nav>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-start md:items-center space-y-3 md:space-y-0 md:space-x-6 text-sm">
+            <p className="text-white/30">© 2016 – {currentYear} Clay Global, LLC</p>
+            <Link href="/privacy" className="text-white/30 hover:text-white/50 transition-colors">Privacy</Link>
+            <Link href="/terms" className="text-white/30 hover:text-white/50 transition-colors">Terms</Link>
+            <Link href="/sitemap" className="text-white/30 hover:text-white/50 transition-colors">Sitemap</Link>
+          </div>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 }
-
-export default Footer;
