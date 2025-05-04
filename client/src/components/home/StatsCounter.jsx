@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import grainImage from "@/assets/images/grain.jpg";
 
-function useCountUp(target, duration = 2000) {
+function useCountUp(target, duration = 2000, delay = 0) {
   const [count, setCount] = useState(0);
   const rafId = useRef();
+  const timeoutId = useRef();
 
   useEffect(() => {
     let start = null;
+
     function animate(ts) {
       if (!start) start = ts;
       const progress = Math.min((ts - start) / duration, 1);
@@ -18,12 +20,20 @@ function useCountUp(target, duration = 2000) {
         setCount(target);
       }
     }
-    rafId.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId.current);
-  }, [target, duration]);
+
+    timeoutId.current = setTimeout(() => {
+      rafId.current = requestAnimationFrame(animate);
+    }, delay);
+
+    return () => {
+      cancelAnimationFrame(rafId.current);
+      clearTimeout(timeoutId.current);
+    };
+  }, [target, duration, delay]);
 
   return count;
 }
+
 
 const stats = [
   { label: "Team", value: 80, suffix: "+", },
@@ -60,7 +70,8 @@ export default function StatsCounter() {
 }
 
 function StatBlock({ label, value, suffix, delay }) {
-  const count = useCountUp(value, 1200 + delay);
+  // Fixed duration for count-up, delay controls start time
+  const count = useCountUp(value, 1200, delay);
 
   return (
     <div
@@ -80,3 +91,4 @@ function StatBlock({ label, value, suffix, delay }) {
     </div>
   );
 }
+

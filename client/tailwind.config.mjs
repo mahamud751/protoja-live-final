@@ -62,6 +62,14 @@ export default {
         'border-dash': {
           '100%': { 'stroke-dashoffset': '100' },
         },
+        float1: {
+          '0%, 100%': { transform: 'translateY(0) scale(1) rotate(0deg)' },
+          '50%': { transform: 'translateY(-10px) scale(1.05) rotate(5deg)' },
+        },
+        float2: {
+          '0%, 100%': { transform: 'translateY(0) scale(1) rotate(0deg)' },
+          '50%': { transform: 'translateY(10px) scale(0.95) rotate(-5deg)' },
+        },
       },
 
       animation: {
@@ -75,6 +83,8 @@ export default {
         identifier: "identifier 20s linear infinite",
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
         'border-dash': 'border-dash 4s linear infinite',
+        float1: 'float1 6s ease-in-out infinite',
+        float2: 'float2 8s ease-in-out infinite',
       },
     },
   },
