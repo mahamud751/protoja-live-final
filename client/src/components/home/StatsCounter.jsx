@@ -45,7 +45,7 @@ const stats = [
 
 export default function StatsCounter() {
   return (
-    <section className="py-20 mb-16">
+    <section className="lg:py-24">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-5xl font-light mb-16 leading-tight text-white">
           <span className="italic font-serif">Our</span>{" "}

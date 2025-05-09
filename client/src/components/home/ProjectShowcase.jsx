@@ -4,7 +4,7 @@ import grainImage from "@/assets/images/grain.jpg";
 
 export default function ProjectShowcase() {
   return (
-    <div className="relative flex items-center justify-center w-full px-4 py-12 mb-16">
+    <div className="relative flex items-center justify-center w-full px-4 lg:py-16 mb-24">
       {/* Outer Wrapper */}
       <div className="relative w-full max-w-[640px] p-8">
         {/* Dotted SVG Border */}

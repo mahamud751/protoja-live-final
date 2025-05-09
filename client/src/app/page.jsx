@@ -3,7 +3,6 @@ import Faq from "@/components/home/Faq";
 import Question from "@/components/home/Question";
 import Company from "@/components/home/Company";
 import Contact from "@/components/home/Contact";
-import Approach from "@/components/home/Approach";
 import Trending from "@/components/home/Trending";
 import ExpertiseSection from "@/components/home/ExpertiseSection";
 import HeroSection from "@/components/home/HeroSection";
@@ -11,6 +10,7 @@ import DesignForFutureSection from "@/components/home/DesignForFutureSection";
 import StatsCounter from "@/components/home/StatsCounter";
 import ProjectApproachSlider from "@/components/home/ProjectApproachSlider";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
+import BlogSection from "@/components/home/BlogSection";
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
       {/* <Trending /> */}
       <Company />
       <StatsCounter/>
-      <Approach />
+      <BlogSection/>
       <ProjectShowcase/>
       {/* <Box className="w-full mt-20 px-3 sm:px-6 lg:px-16 bg-[#202124] p-16">
         <Container>

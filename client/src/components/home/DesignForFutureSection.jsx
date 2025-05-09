@@ -53,7 +53,7 @@ const Card = ({ Icon, title, description }) => (
 
 const DesignForFutureSection = () => {
     return (
-        <section className="max-w-7xl mx-auto px-6 py-16">
+        <section className="max-w-7xl mx-auto px-6 lg:py-24">
             <div>
                 <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center">
                     Why Choose Us

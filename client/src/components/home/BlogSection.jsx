@@ -8,7 +8,7 @@ import grainImage from "@/assets/images/grain.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Approach() {
+export default function BlogSection() {
   const sectionRef = useRef(null);
   const firstRowImageRefs = useRef([]);
   const secondRowImageRefs = useRef([]);
@@ -141,8 +141,8 @@ export default function Approach() {
   );
 
   return (
-    <div className="p-4 md:p-16 w-full" ref={sectionRef}>
-      <div className="pt-32">
+    <div className="p-4 md:p-16 lg:py-24 w-full" ref={sectionRef}>
+      <div className="">
         <div className="flex justify-center">
           <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center">
             Our Blog

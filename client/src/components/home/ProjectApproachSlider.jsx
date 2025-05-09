@@ -47,7 +47,7 @@ export default function ProjectApproach() {
         .concat(steps.slice(0, Math.max(0, startIndex + maxVisible - totalSteps)));
 
     return (
-        <section className="text-white py-16 relative overflow-hidden">
+        <section className="text-white lg:py-24 relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 text-center">
                 {/* Subtitle with ping */}
                 <div className="flex justify-center items-center gap-2 mb-4">
