@@ -12,8 +12,8 @@ const Works = () => {
     <>
     <CaseStudySection/>
     <CaseStudiesGrid/>
-      <WorksTop />
-      <BasicTabs />
+      {/* <WorksTop /> */}
+      {/* <BasicTabs /> */}
       <Company />
       {/* <Question header={"You feel it too?"} /> */}
       {/* <Contact page="serice" /> */}

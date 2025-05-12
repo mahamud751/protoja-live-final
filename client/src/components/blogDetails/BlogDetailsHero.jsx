@@ -2,51 +2,54 @@ import * as React from "react";
 import Image from "next/image";
 
 export default function BlogDetailsHero({ blogMain }) {
-  return (
-    <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg">
-      <div className="grid grid-cols-12 gap-4">
-        {/* Left Side Content (span 6 columns on larger screens, 12 on mobile) */}
-        <div className="col-span-12 lg:col-span-6">
-          <div className="flex justify-center items-center h-full">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 w-[220px]">
-                {blogMain?.name}
-              </h1>
-              <p className="text-base md:text-lg font-medium text-gray-700 mt-4">
-                {blogMain?.desc}
-              </p>
+  const firstPhoto = blogMain?.photos?.[0];
 
-              {/* Author Information */}
-              <div className="flex items-center mt-6">
-                <Image
-                  src="/assets/blog-image/author.png"
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                  alt="Author"
-                />
-                <div className="ml-3 text-sm text-gray-600">
-                  <span className="font-semibold">Md Rafatul Islam</span>
-                  <div>Published 14 Jan 2024</div>
-                </div>
-              </div>
+  return (
+    <div className="bg-white p-6 md:p-10 rounded-2xl shadow-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Left Content */}
+        <div className="lg:col-span-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+            {blogMain?.name}
+          </h1>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            {blogMain?.desc}
+          </p>
+
+          {/* Author Info */}
+          <div className="flex items-center gap-4">
+            <Image
+              src="/images/avatar.jpg"
+              width={48}
+              height={48}
+              className="rounded-full border border-gray-200"
+              alt="Author"
+            />
+            <div>
+              <p className="text-sm text-gray-800 font-semibold">Md Rafatul Islam</p>
+              <p className="text-sm text-gray-500">Published 14 Jan 2024</p>
             </div>
           </div>
         </div>
 
-        {/* Right Side Images Grid (span 6 columns on larger screens, 12 on mobile) */}
-        <div className="col-span-12 lg:col-span-6 gap-4">
-          {blogMain?.photos?.map((photo, index) => (
-            <div key={index}>
+        {/* Right Side – Show only first image */}
+        <div className="lg:col-span-6 w-full">
+          {firstPhoto ? (
+            <div className="rounded-xl overflow-hidden shadow-md">
               <Image
-                src={photo}
-                alt={`Blog Image ${index + 1}`}
-                className="rounded-lg"
+                src={firstPhoto}
+                alt="Blog Main Image"
+                className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
                 width={1000}
                 height={1000}
+                priority
               />
             </div>
-          ))}
+          ) : (
+            <div className="w-full h-64 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400">
+              No image available
+            </div>
+          )}
         </div>
       </div>
     </div>

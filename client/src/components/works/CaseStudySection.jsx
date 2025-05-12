@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CaseStudySection() {
   return (
-    <section className="bg-[#181B1E] py-24 px-4">
+    <section className="bg-[#eaeef1] py-32 px-4">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         {/* Heading */}
         <motion.h2
@@ -12,7 +12,7 @@ export default function CaseStudySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-white mb-4"
+          className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
         >
           Transforming Vision Into Impact
         </motion.h2>
@@ -23,7 +23,7 @@ export default function CaseStudySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl"
+          className="text-gray-600 text-lg md:text-xl mb-12 max-w-3xl"
         >
           We partner with fast-growing startups and visionary brands to craft delightful user experiences and scalable digital products.
         </motion.p>
