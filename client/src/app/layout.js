@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         <title>Protoja — The Ultimate UI/UX Design Agency for Visionary Brands.</title>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-800 text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-800 bg-[#eaeef1]`}
       >
         <AppRouterCacheProvider options={{ prepend: true }}>
           <Provider>{children}</Provider>

@@ -52,18 +52,18 @@ export default function ProjectApproach() {
                 {/* Subtitle with ping */}
                 <div className="flex justify-center items-center gap-2 mb-4">
                     <span className="relative flex h-4 w-4">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-500 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-4 w-4 bg-sky-400" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-400" />
                     </span>
-                    <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text">
+                    <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text">
                         Our Approach
                     </p>
                 </div>
 
                 {/* Title */}
-                <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-white">
+                <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-gray-800">
                     Live in <span className="line-through text-gray-400">Months</span>{' '}
-                    <span className="text-white">Weeks</span>
+                    <span className="text-gray-800">Weeks</span>
                 </h2>
             </div>
 
@@ -73,16 +73,16 @@ export default function ProjectApproach() {
                     <div key={index} className="flex items-center w-full">
                         <span className="relative flex h-5 w-5 items-center justify-center shrink-0">
                             {index === startIndex && (
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
                             )}
                             <span
-                                className={`relative inline-flex rounded-full h-5 w-5 transition-colors ${index === startIndex ? 'bg-sky-400' : 'bg-gray-600'
+                                className={`relative inline-flex rounded-full h-5 w-5 transition-colors ${index === startIndex ? 'bg-blue-400' : 'bg-gray-600'
                                     }`}
                             />
                         </span>
                         {index !== steps.length - 1 && (
                             <div
-                                className={`h-1 flex-1 mx-2 transition-all duration-300 ${index < startIndex ? 'bg-sky-400' : 'bg-white/30 opacity-30'
+                                className={`h-1 flex-1 mx-2 transition-all duration-300 ${index < startIndex ? 'bg-blue-400' : 'bg-blue-400 opacity-30'
                                     }`}
                             />
                         )}
@@ -120,13 +120,13 @@ export default function ProjectApproach() {
                 {/* Arrows */}
                 <button
                     onClick={prev}
-                    className="absolute -left-4 md:-left-8 top-0 transform -translate-y-1/2 z-10 bg-sky-500 hover:bg-sky-400 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
+                    className="absolute -left-4 md:-left-8 top-0 transform -translate-y-1/2 z-10 bg-blue-500 hover:bg-blue-400 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
                 >
                     <ArrowLeft size={24} />
                 </button>
                 <button
                     onClick={next}
-                    className="absolute -right-4 md:-right-8 top-0 transform -translate-y-1/2 z-10 bg-sky-500 hover:bg-sky-400 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
+                    className="absolute -right-4 md:-right-8 top-0 transform -translate-y-1/2 z-10 bg-blue-500 hover:bg-blue-400 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
                 >
                     <ArrowRight size={24} />
                 </button>

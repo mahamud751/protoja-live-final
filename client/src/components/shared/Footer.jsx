@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import grainImage from "@/assets/images/grain.jpg";
+import BackToTop from './BackToTop';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="pt-24 pb-8 relative overflow-hidden mt-auto bg-gray-800">
+    <footer className="pt-24 pb-8 relative overflow-hidden mt-auto bg-gray-800 text-white">
       {/* Blob 1 */}
       <svg
         className="absolute -top-24 -left-24 w-72 h-72 opacity-20 text-emerald-500 animate-float1"
@@ -42,7 +43,7 @@ export default function Footer() {
       </div>
       <div className="container mx-auto px-6 md:px-8 relative z-10">
         {/* ...rest of your footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 text-white">
           <div>
             <h2 className="text-5xl font-bold mb-6">Let's Talk</h2>
             <div className="space-y-2">
@@ -115,6 +116,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <BackToTop />
     </footer>
   );
 }

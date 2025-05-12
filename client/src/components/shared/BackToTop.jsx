@@ -43,14 +43,17 @@ function BackToTop() {
       <motion.button
         onClick={scrollToTop}
         aria-label="Back to top"
-        whileHover={{ scale: 1.1, boxShadow: "0 0 12px 4px rgba(251, 146, 60, 0.7)" }}
+        whileHover={{ 
+          scale: 1.1, 
+          boxShadow: "0 0 12px 4px rgba(59, 130, 246, 0.7)" // Changed to blue-500 with 70% opacity
+        }}
         whileTap={{ scale: 0.95 }}
         className="
           flex items-center justify-center
           w-14 h-14 rounded-full
-          bg-gradient-to-r from-orange-400 to-orange-600
+          bg-gradient-to-r from-blue-600 to-blue-400
           text-white shadow-lg
-          focus:outline-none focus:ring-4 focus:ring-orange-400 focus:ring-opacity-60
+          focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-opacity-60
           transition-all duration-300
           cursor-pointer
         "

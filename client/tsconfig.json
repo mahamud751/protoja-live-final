@@ -28,6 +28,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/home/Banner.jsx"
-  ],
+, "src/app/(pages)/about/page.jsx"  ],
   "exclude": ["node_modules"]
 }

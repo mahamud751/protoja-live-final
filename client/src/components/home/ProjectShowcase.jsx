@@ -62,7 +62,7 @@ export default function ProjectShowcase() {
             The proof is in our work. Check out{' '}
             <Link
               href="/case-studies"
-              className="text-pink-400 underline hover:text-pink-500 transition"
+              className="text-blue-400 underline hover:text-blue-500 transition"
             >
               our case studies
             </Link>{' '}
@@ -70,7 +70,7 @@ export default function ProjectShowcase() {
           </p>
           <Link
             href="/contact"
-            className="group flex items-center gap-2 bg-gradient-to-r from-emerald-300 to-sky-400 hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm hover:rounded-2xl transition duration-200"
+            className="group flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm hover:rounded-2xl transition duration-200"
             aria-label="Book a free discovery session"
           >
             <svg

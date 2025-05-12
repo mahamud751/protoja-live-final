@@ -1,37 +1,29 @@
 "use client";
+
+import React from "react";
 import BlogDetails from "@/components/blogDetails/BlogDetails";
 import BlogDetailsHero from "@/components/blogDetails/BlogDetailsHero";
 import LatestBlogs from "@/components/blogDetails/LatestBlogs";
-import Contact from "@/components/home/Contact";
-import UseFetch from "../../../../hook/useFetch";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-const Page = ({ params: paramsPromise }) => {
-  // Unwrap params using React.use()
-  const params = React.use(paramsPromise);
-  //@ts-ignore
-  const { id } = params; // Access id after unwrapping
-  const { data: blogMain } = UseFetch(`blogs/${id}`);
-  const [blogs, setBlogs] = useState();
-  const fetchBlogs = async () => {
-    const response = await axios
-      .get("https://api.protoja.com/api/blogs")
-      .catch((err) => {});
-    //@ts-ignore
-    setBlogs(response.data);
-  };
+import mockBlogData from './../../../../data/mockBlogData ';
 
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+
+const Page = ({ params }) => {
+  const { id } = params;
+  const blogMain = mockBlogData.find(blog => blog._id === id);
+  const latestBlogs = mockBlogData.filter(blog => blog._id !== id);
+
+  if (!blogMain) {
+    return <p className="text-center py-20 text-white">Blog post not found.</p>;
+  }
 
   return (
-    <div className="md:px-20 lg:px-24">
+    <div className="md:px-20 lg:px-24 py-32">
       <BlogDetailsHero blogMain={blogMain} />
       <BlogDetails blogMain={blogMain} />
-      <LatestBlogs blogs={blogs} />
-      <Contact page="" />
+      <LatestBlogs blogs={latestBlogs} />
+      {/* <Contact page="" /> */}
     </div>
   );
 };
+
 export default Page;

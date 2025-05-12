@@ -85,11 +85,11 @@ const ExpertiseSection = () => {
     <section className="pb-16 lg:py-24">
       <div className="container mx-auto">
         <div className="flex justify-center">
-          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center">
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text text-center">
             Our Expertise
           </p>
         </div>
-        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-white">
+        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-gray-800">
           What We Do
         </h2>
 

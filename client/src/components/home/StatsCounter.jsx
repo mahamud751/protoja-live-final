@@ -47,7 +47,7 @@ export default function StatsCounter() {
   return (
     <section className="lg:py-24">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-5xl font-light mb-16 leading-tight text-white">
+        <h2 className="text-3xl md:text-5xl font-light mb-16 leading-tight text-gray-800">
           <span className="italic font-serif">Our</span>{" "}
           <span className="font-semibold">
             STORY, BY NUMBERS
