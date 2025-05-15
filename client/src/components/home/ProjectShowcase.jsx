@@ -15,10 +15,10 @@ export default function ProjectShowcase() {
         >
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#6ee7b7">
+              <stop offset="0%" stopColor="#fd5001">
                 <animate attributeName="offset" values="0%;100%" dur="6s" repeatCount="indefinite" />
               </stop>
-              <stop offset="100%" stopColor="#38bdf8">
+              <stop offset="100%" stopColor="#ff8c00">
                 <animate attributeName="offset" values="100%;200%" dur="6s" repeatCount="indefinite" />
               </stop>
             </linearGradient>
@@ -48,21 +48,21 @@ export default function ProjectShowcase() {
         </svg>
 
         {/* Styled Content Card */}
-        <div className="relative z-10 flex flex-col items-center justify-center gap-6 rounded-2xl bg-gray-800 p-6 md:p-10 lg:p-12 overflow-hidden transition">
+        <div className="relative z-10 flex flex-col items-center justify-center gap-6 rounded-2xl bg-[#1A0E1C] p-6 md:p-10 lg:p-12 overflow-hidden transition">
           {/* Grain background */}
           <div
             className="absolute inset-0 -z-10 opacity-5"
             style={{ backgroundImage: `url(${grainImage.src})` }}
           />
 
-          <h2 className="text-3xl font-semibold text-center text-white mb-3 font-display tracking-tight">
+          <h2 className="text-3xl font-semibold text-center text-[#fd5001] mb-3 font-display tracking-tight">
             Your project here
           </h2>
           <p className="text-base text-center text-white/50 mb-5">
             The proof is in our work. Check out{' '}
             <Link
               href="/case-studies"
-              className="text-blue-400 underline hover:text-blue-500 transition"
+              className="text-[#fd5001] underline transition"
             >
               our case studies
             </Link>{' '}
@@ -70,7 +70,7 @@ export default function ProjectShowcase() {
           </p>
           <Link
             href="/contact"
-            className="group flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-400 hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm hover:rounded-2xl transition duration-200"
+            className="group flex items-center gap-2 bg-gradient-to-r from-[#fd5001] to-[#ff8c00] hover:brightness-110 text-white font-medium py-2.5 px-6 rounded-full shadow-sm hover:rounded-2xl transition duration-200"
             aria-label="Book a free discovery session"
           >
             <svg

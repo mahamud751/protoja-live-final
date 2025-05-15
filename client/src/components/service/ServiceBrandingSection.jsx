@@ -17,7 +17,7 @@ const services = [
 export default function ServiceBrandingSection() {
   return (
     <motion.section
-      className="w-full bg-white py-20"
+      className="w-full bg-[#1a0e1c] py-20"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -50,7 +50,7 @@ export default function ServiceBrandingSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 leading-tight">
+          <h2 className="text-4xl font-bold text-[#fd5001] mb-4 leading-tight">
             Memorable Branding That Resonates
           </h2>
           <p className="text-gray-600 mb-8 max-w-lg text-lg">
@@ -65,13 +65,13 @@ export default function ServiceBrandingSection() {
                 whileHover={{ scale: 1.02 }}
               >
                 <div className="flex items-center gap-4">
-                  <span className="text-gray-400 font-mono w-7">
+                  <span className="text-gray-400 font-mono w-7 group-hover:text-[#fd5001]">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-lg text-gray-900">{service}</span>
+                  <span className="text-lg text-white/90 group-hover:text-[#fd5001]">{service}</span>
                 </div>
                 <ArrowRight
-                  className="text-gray-400 group-hover:text-black transition"
+                  className="text-gray-400 group-hover:text-[#fd5001] transition"
                   size={20}
                 />
               </motion.li>

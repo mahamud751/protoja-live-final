@@ -85,11 +85,11 @@ const ExpertiseSection = () => {
     <section className="pb-16 lg:py-24">
       <div className="container mx-auto">
         <div className="flex justify-center">
-          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text text-center">
+          <p className="uppercase font-semibold tracking-widest text-[#1A0E1C] text-center">
             Our Expertise
           </p>
         </div>
-        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-gray-800">
+        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-[#fd5001]">
           What We Do
         </h2>
 
@@ -97,7 +97,7 @@ const ExpertiseSection = () => {
           {expertiseFields.map((project, index) => (
             <div
               key={project.title}
-              className="bg-gray-800 rounded-3xl relative z-0 p-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 overflow-hidden border-2 border-white/20"
+              className="bg-[#1a0e1c] rounded-3xl relative z-0 p-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 overflow-hidden border-2 border-white/20"
               style={{
                 top: `calc(64px + ${index * 40}px)`,
                 position: "sticky",
@@ -110,7 +110,7 @@ const ExpertiseSection = () => {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16 relative z-10">
                 <div className="lg:pb-16">
                   {project.labels && (
-                    <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 md:uppercase font-bold tracking-widest text-xs md:text-sm text-transparent bg-clip-text">
+                    <div className="bg-gradient-to-r from-[#fd5001] to-[#ff8c00] inline-flex gap-2 md:uppercase font-bold tracking-widest text-xs md:text-sm text-transparent bg-clip-text">
                       {project.labels.map((label, i) => (
                         <span key={i}>
                           {label}

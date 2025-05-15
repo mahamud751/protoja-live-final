@@ -9,7 +9,7 @@ export default function BlogDetailsHero({ blogMain }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         {/* Left Content */}
         <div className="lg:col-span-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#fd5001] leading-tight mb-4">
             {blogMain?.name}
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -26,7 +26,7 @@ export default function BlogDetailsHero({ blogMain }) {
               alt="Author"
             />
             <div>
-              <p className="text-sm text-gray-800 font-semibold">Md Rafatul Islam</p>
+              <p className="text-sm text-[#1a0e1c] font-semibold">Md Rafatul Islam</p>
               <p className="text-sm text-gray-500">Published 14 Jan 2024</p>
             </div>
           </div>

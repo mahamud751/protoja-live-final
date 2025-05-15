@@ -12,14 +12,14 @@ const team = [
 export default function TeamSection() {
   return (
     <motion.section
-      className="bg-gray-50 px-6 py-20 text-gray-800"
+      className="px-6 py-20 text-gray-800"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.7 }}
     >
       <div className="max-w-6xl mx-auto text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Meet Our Team</h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-[#fd5001]">Meet Our Team</h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           A collective of thinkers, dreamers, and doers dedicated to delivering impactful digital experiences.
         </p>

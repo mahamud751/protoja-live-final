@@ -69,10 +69,10 @@ export default function ServiceExpertiseSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <div>
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">Our Expertise</h3>
+            <h3 className="text-lg font-semibold text-[#fd5001] mb-2">Our Expertise</h3>
           </div>
           <div className="md:w-2/3">
-            <p className="text-2xl md:text-3xl font-medium text-gray-900 leading-snug">
+            <p className="text-2xl md:text-3xl font-medium text-[#1a0e1c] leading-snug">
               We’ve collaborated with digital product teams across industries to craft user-first
               solutions. Here's where we specialize — though our skills reach far beyond.
             </p>
@@ -82,18 +82,18 @@ export default function ServiceExpertiseSection() {
         {/* Slider Controls */}
         <div className="flex justify-end gap-2 mb-4">
           <button
-            className="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition"
+            className="p-2 rounded-full bg-[#ff8c00] shadow hover:bg-[#fd5001] transition"
             onClick={() => scroll(-300)}
             aria-label="Scroll left"
           >
-            <ArrowRight className="rotate-180 text-gray-700" size={20} />
+            <ArrowRight className="rotate-180 text-white" size={20} />
           </button>
           <button
-            className="p-2 rounded-full bg-white shadow hover:bg-gray-100 transition"
+            className="p-2 rounded-full bg-[#ff8c00] shadow hover:bg-[#fd5001] transition"
             onClick={() => scroll(300)}
             aria-label="Scroll right"
           >
-            <ArrowRight className="text-gray-700" size={20} />
+            <ArrowRight className="text-white" size={20} />
           </button>
         </div>
 
@@ -129,7 +129,7 @@ export default function ServiceExpertiseSection() {
               </div>
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex flex-col items-center justify-center p-6 z-10 text-center">
+              <div className="absolute inset-0 bg-[#1a0e1c] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex flex-col items-center justify-center p-6 z-10 text-center">
                 <p className="text-white text-sm">{item.details}</p>
               </div>
             </motion.div>

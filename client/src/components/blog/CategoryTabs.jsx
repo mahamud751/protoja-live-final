@@ -8,9 +8,9 @@ export default function CategoryTabs({ onTabChange }) {
   const categories = [
     { label: "View all", value: "view-all" },
     { label: "Design", value: "design" },
-    { label: "Product Design", value: "productivity" }, // mapped to 'productivity'
-    { label: "UX Design", value: "design" }, // UX Design and Design share 'design' type
-    { label: "UI Design", value: "design" }, // same as above
+    { label: "Product Design", value: "productivity" },
+    { label: "UX Design", value: "design" }, 
+    { label: "UI Design", value: "design" }, 
     // Add more mappings if needed
   ];
 
@@ -28,8 +28,8 @@ export default function CategoryTabs({ onTabChange }) {
             key={category.value}
             onClick={() => handleTabClick(category)}
             className={`relative text-sm sm:text-base md:text-lg pb-2 font-semibold transition whitespace-nowrap ${activeTab === category.label
-                ? "bg-gradient-to-r from-blue-400 to-blue-300 text-transparent bg-clip-text"
-                : "text-gray-600 hover:text-gray-500 "
+                ? "text-[#1a0e1c]"
+                : "text-gray-600 hover:text-[#ff8c00]"
               }`}
           >
             {category.label}

@@ -12,7 +12,7 @@ const steps = [
 export default function ProcessSection() {
   return (
     <motion.section
-      className="bg-gray-50 px-6 py-20 text-gray-900"
+      className="bg-[#1a0e1c] px-6 py-20 text-gray-900"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -22,10 +22,10 @@ export default function ProcessSection() {
       }}
     >
       <div className="max-w-5xl mx-auto text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight text-[#fd5001]">
           How We Bring Ideas to Life
         </h2>
-        <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
           Our process is crafted to transform vision into reality — collaboratively, creatively, and efficiently.
         </p>
       </div>
@@ -34,18 +34,18 @@ export default function ProcessSection() {
         {steps.map((step, idx) => (
           <motion.div
             key={step.title}
-            className="bg-white p-6 rounded-xl shadow-lg text-center flex flex-col items-center"
+            className="p-6 border border-white/30 rounded-xl shadow-lg text-center flex flex-col items-center"
             variants={{
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.6, delay: idx * 0.1 }}
           >
-            <div className="w-16 h-16 mb-4 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xl">
+            <div className="w-16 h-16 mb-4 rounded-full bg-indigo-100 flex items-center justify-center text-[#fd5001] font-bold text-xl">
               {idx + 1}
             </div>
-            <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-            <p className="text-gray-700 text-base">{step.desc}</p>
+            <h3 className="text-xl font-semibold mb-2 text-[#fd5001]">{step.title}</h3>
+            <p className="text-white/70 text-base">{step.desc}</p>
           </motion.div>
         ))}
       </div>

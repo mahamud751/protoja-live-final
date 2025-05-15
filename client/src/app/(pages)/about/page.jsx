@@ -11,12 +11,12 @@ const page = () => {
     return (
         <>
             <AboutHeroSection />
-            <MissionSection/>
-            <VisionSection/>
-            <ProcessSection/>
-            <TeamSection/>
-            <AchievementsSection/>
-            <CallToActionSection/>
+            <MissionSection />
+            <VisionSection />
+            <ProcessSection />
+            <TeamSection />
+            <AchievementsSection />
+            <CallToActionSection />
         </>
     )
 }

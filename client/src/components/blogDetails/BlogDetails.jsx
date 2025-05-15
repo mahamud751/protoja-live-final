@@ -18,7 +18,7 @@ export default function BlogDetails({ blogMain }) {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 my-10 px-4 sm:px-6 lg:px-8">
       {/* Sidebar TOC */}
       <aside className="lg:col-span-4 bg-white p-6 rounded-2xl shadow-xl lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] overflow-y-auto order-1">
-        <h3 className="text-2xl font-semibold text-blue-600 mb-6">
+        <h3 className="text-2xl font-semibold text-[#fd5001] mb-6">
           Table of Contents
         </h3>
         <ul className="space-y-4 text-base text-gray-700">
@@ -29,8 +29,8 @@ export default function BlogDetails({ blogMain }) {
                 smooth={true}
                 duration={500}
                 offset={-60}
-                className={`transition-colors duration-200 cursor-pointer hover:text-blue-600 ${
-                  activeLink === `section-${index}` ? "text-blue-600 font-medium" : ""
+                className={`transition-colors duration-200 cursor-pointer hover:text-[#fd5001] ${
+                  activeLink === `section-${index}` ? "text-[#ff8c00] font-medium" : ""
                 }`}
               >
                 {section.title}
@@ -41,10 +41,10 @@ export default function BlogDetails({ blogMain }) {
 
         {/* Share Icons */}
         <div className="mt-8 flex gap-4">
-          <LucideLink className="w-6 h-6 text-gray-600 hover:text-black transition" />
-          <Twitter className="w-6 h-6 text-gray-600 hover:text-[#1DA1F2] transition" />
-          <Facebook className="w-6 h-6 text-gray-600 hover:text-[#1877F2] transition" />
-          <Linkedin className="w-6 h-6 text-gray-600 hover:text-[#0A66C2] transition" />
+          <LucideLink className="w-6 h-6 text-gray-600 hover:text-black cursor-pointer transition" />
+          <Twitter className="w-6 h-6 text-gray-600 hover:text-[#fd5001] cursor-pointer transition" />
+          <Facebook className="w-6 h-6 text-gray-600 hover:text-[#fd5001] cursor-pointer transition" />
+          <Linkedin className="w-6 h-6 text-gray-600 hover:text-[#fd5001] cursor-pointer transition" />
         </div>
       </aside>
 
@@ -60,7 +60,7 @@ export default function BlogDetails({ blogMain }) {
             }}
             className="mt-10"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 border-l-4 border-blue-500 pl-4">
+            <h2 className="text-3xl font-bold text-[#fd5001] mb-4 border-l-4 border-[#ff8c00] pl-4">
               {section.title}
             </h2>
             <div

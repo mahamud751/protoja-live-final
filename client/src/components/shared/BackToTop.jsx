@@ -45,15 +45,15 @@ function BackToTop() {
         aria-label="Back to top"
         whileHover={{ 
           scale: 1.1, 
-          boxShadow: "0 0 12px 4px rgba(59, 130, 246, 0.7)" // Changed to blue-500 with 70% opacity
+          boxShadow: "0 0 12px 4px rgba(255, 140, 0, 0.5)"
         }}
         whileTap={{ scale: 0.95 }}
         className="
           flex items-center justify-center
           w-14 h-14 rounded-full
-          bg-gradient-to-r from-blue-600 to-blue-400
+          bg-gradient-to-r from-[#fd5001] to-[#ff8c00]
           text-white shadow-lg
-          focus:outline-none focus:ring-4 focus:ring-blue-400 focus:ring-opacity-60
+          focus:outline-none focus:ring-4 focus:ring-[#ff8c00] focus:ring-opacity-60
           transition-all duration-300
           cursor-pointer
         "

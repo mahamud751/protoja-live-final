@@ -41,7 +41,7 @@ export default function BlogCard() {
   return (
     <>
       <section>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-gray-800 leading-tight my-32 mb-6 text-center md:text-left  inline-flex gap-2 md:uppercase tracking-widest">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#fd5001] leading-tight my-32 mb-6 text-center md:text-left  inline-flex gap-2 md:uppercase tracking-widest">
           The Curiosity Blog
         </h1>
 
@@ -60,11 +60,11 @@ export default function BlogCard() {
                   />
                 </div>
                 <div className="p-3">
-                  <div className="flex justify-between">
-                    <h2 className="text-2xl font-semibold text-gray-800 h-16">
+                  <div className="flex justify-between group">
+                    <h2 className="text-2xl font-semibold text-[#fd5001] h-16">
                       {card.name}
                     </h2>
-                    <MdArrowOutward size={20} className="text-black" />
+                    <MdArrowOutward size={20} className="text-[#ff8c00] group-hover:text-[#fd5001]" />
                   </div>
                   <p className="text-gray-600 mt-2 text-sm">{card.desc}</p>
                 </div>

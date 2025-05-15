@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function CaseStudySection() {
   return (
-    <section className="bg-[#eaeef1] py-32 px-4">
+    <section className="py-32 px-4">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         {/* Heading */}
         <motion.h2
@@ -12,7 +12,7 @@ export default function CaseStudySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          className="text-4xl md:text-5xl font-bold text-[#fd5001] mb-4"
         >
           Transforming Vision Into Impact
         </motion.h2>
@@ -34,7 +34,7 @@ export default function CaseStudySection() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
           viewport={{ once: true }}
-          className="w-full group bg-[#1F2225] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+          className="w-full group bg-[#1a0e1c] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="overflow-hidden">
             <Image
@@ -47,7 +47,7 @@ export default function CaseStudySection() {
             />
           </div>
           <div className="p-6 md:p-8 text-left">
-            <h3 className="text-white text-2xl font-semibold mb-2">Glide — Streamlined Career Management</h3>
+            <h3 className="text-[#fd5001] text-2xl font-semibold mb-2">Glide — Streamlined Career Management</h3>
             <p className="text-gray-300 text-base mb-5 leading-relaxed">
               Glide is a modern job referral and applicant tracking system focused on simplicity, performance, and clarity.
               We redefined its UI/UX to align with user needs, making the process of job hunting and team referrals intuitive and engaging.
@@ -56,7 +56,7 @@ export default function CaseStudySection() {
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
               {["UI/UX Design", "Design System", "Frontend Development", "Brand Strategy"].map(tag => (
-                <span key={tag} className="bg-[#2A2D31] text-gray-200 text-xs font-medium px-3 py-1 rounded-full">
+                <span key={tag} className="bg-[#ff8c00] text-white text-xs font-medium px-3 py-1 rounded-full">
                   {tag}
                 </span>
               ))}

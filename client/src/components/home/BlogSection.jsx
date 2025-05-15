@@ -88,7 +88,7 @@ export default function BlogSection() {
   };
 
   const BlogCard = ({ blog }) => (
-    <div className="relative z-0 flex flex-col gap-4 rounded-3xl border-2 border-white/20 bg-gray-800 p-4 md:p-6 shadow-md overflow-hidden transition"
+    <div className="relative z-0 flex flex-col gap-4 rounded-3xl bg-[#1a0e1c] p-4 md:p-6 shadow-md overflow-hidden transition"
       style={{ width: `${Math.min(500, windowWidth * 0.3)}px` }}>
       <div className="absolute inset-0 -z-10 opacity-5"
         style={{ backgroundImage: `url(${grainImage.src})` }} />
@@ -112,10 +112,10 @@ export default function BlogSection() {
   return (
     <div className="p-4 lg:py-16 w-full" ref={sectionRef}>
       <div className="text-center">
-        <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text">
+        <p className="uppercase font-semibold tracking-widest text-[#1A0E1C] text-center">
           Our Blog
         </p>
-        <h2 className="font-serif text-3xl md:text-5xl mt-6 text-gray-800">
+        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-[#fd5001]">
           Latest Trends and Updates
         </h2>
       </div>

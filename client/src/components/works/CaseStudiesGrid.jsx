@@ -79,7 +79,7 @@ const caseStudies = [
 
 export default function CaseStudiesGrid() {
   return (
-    <section className="bg-[#eaeef1] px-4">
+    <section className="px-4">
       <div className="max-w-7xl mx-auto space-y-20">
         {Array.from({ length: 8 }).map((_, rowIndex) => {
           const start = rowIndex % 2 === 0 ? (rowIndex / 2) * 3 : ((rowIndex - 1) / 2) * 3 + 2;
@@ -126,13 +126,13 @@ function CaseStudyCard({ study, delay }) {
           priority
         />
       </div>
-      <h3 className="text-gray-800 text-2xl font-semibold mb-2">{study.title}</h3>
+      <h3 className="text-[#fd5001] text-2xl font-semibold mb-2">{study.title}</h3>
       <p className="text-gray-600 text-base mb-4">{study.desc}</p>
       <div className="flex flex-wrap gap-2">
         {study.tags.map((tag, i) => (
           <span
             key={i}
-            className="bg-[#2A2D31] text-gray-200 text-xs font-medium px-3 py-1 rounded-full"
+            className="bg-[#ff8c00] text-white text-xs font-medium px-3 py-1 rounded-full"
           >
             {tag}
           </span>

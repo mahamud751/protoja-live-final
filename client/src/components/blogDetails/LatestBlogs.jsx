@@ -34,10 +34,10 @@ export default function LatestBlogs({ blogs }) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 sm:mb-6">
         <div>
-          <p className="text-blue-600 font-semibold text-sm uppercase">
+          <p className="text-[#1a0e1c] font-semibold text-sm uppercase">
             Latest posts
           </p>
-          <h1 className="text-3xl font-bold text-gray-900">Protoja Blog</h1>
+          <h1 className="text-3xl font-bold text-[#fd5001]">Protoja Blog</h1>
           <p className="text-gray-600 text-sm sm:text-base mt-1">
             Interviews, tips, guides, industry best practices
           </p>
@@ -45,7 +45,7 @@ export default function LatestBlogs({ blogs }) {
 
         <Link
           href="/blogs"
-          className="mt-4 sm:mt-0 inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition text-sm font-medium"
+          className="mt-4 sm:mt-0 inline-flex items-center gap-2 border border-[#fd5001] text-[#fd5001] px-4 py-2 rounded-full hover:rounded-2xl transition text-sm font-medium"
         >
           View all posts
           <ArrowRight className="w-4 h-4" />
@@ -70,10 +70,10 @@ export default function LatestBlogs({ blogs }) {
             </div>
             <div className="p-4 flex flex-col gap-2">
               <div className="flex justify-between items-center">
-                <h2 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition line-clamp-2">
+                <h2 className="text-lg font-semibold text-[#fd5001] transition line-clamp-2">
                   {card.name}
                 </h2>
-                <ArrowUpRight className="w-4 h-4 text-gray-500" />
+                <ArrowUpRight className="w-4 h-4 text-[#fd5001]" />
               </div>
               <p className="text-sm text-gray-600 line-clamp-2">{card.desc}</p>
             </div>

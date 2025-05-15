@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function ServiceHeroSection() {
   return (
-    <section className="bg-[#e9ecef] min-h-[440px] flex items-center overflow-hidden">
+    <section className="min-h-[440px] flex items-center overflow-hidden">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-32">
         
         {/* Left: Text Content */}
@@ -14,13 +14,13 @@ export default function ServiceHeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#fd5001] mb-4 leading-tight">
             Design That Drives Growth
           </h1>
           <p className="text-lg text-gray-700 mb-6 max-w-xl">
             We specialize in crafting scalable, user-centric digital products — from MVPs and SaaS platforms to mobile apps and enterprise software. Let us help you transform ideas into intuitive, engaging experiences.
           </p>
-          <button className="bg-black text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-gray-800 transition">
+          <button className="text-[#fd5001] px-8 py-3 border border-[#fd5001] rounded-full font-semibold shadow hover:rounded-2xl transition">
             Start Your Product Journey
           </button>
         </motion.div>

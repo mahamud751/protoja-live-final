@@ -12,7 +12,7 @@ export default function VisionSection() {
       transition={{ duration: 0.7 }}
     >
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tight text-[#fd5001]">
           Our Vision for the Future
         </h2>
         <p className="text-lg md:text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
@@ -32,16 +32,16 @@ export default function VisionSection() {
 
         <ul className="text-left space-y-6 text-base md:text-lg text-gray-800 leading-relaxed">
           <li>
-            <strong className="text-teal-600">🌍 Global Perspective</strong> – We aim to shape experiences that resonate across cultures and platforms.
+            <strong className="text-[#fd5001]">🌍 Global Perspective</strong> – We aim to shape experiences that resonate across cultures and platforms.
           </li>
           <li>
-            <strong className="text-teal-600">🧠 Intelligent Design</strong> – Leveraging data and empathy to build smarter, adaptive interfaces.
+            <strong className="text-[#fd5001]">🧠 Intelligent Design</strong> – Leveraging data and empathy to build smarter, adaptive interfaces.
           </li>
           <li>
-            <strong className="text-teal-600">💡 Innovation First</strong> – Continuously pushing creative and technological boundaries to stay ahead.
+            <strong className="text-[#fd5001]">💡 Innovation First</strong> – Continuously pushing creative and technological boundaries to stay ahead.
           </li>
           <li>
-            <strong className="text-teal-600">💖 Human at the Core</strong> – Prioritizing accessibility, usability, and emotional connection in every design.
+            <strong className="text-[#fd5001]">💖 Human at the Core</strong> – Prioritizing accessibility, usability, and emotional connection in every design.
           </li>
         </ul>
       </div>

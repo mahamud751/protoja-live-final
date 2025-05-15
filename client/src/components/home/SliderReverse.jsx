@@ -20,7 +20,7 @@ const SliderReverse = () => {
       <div className="whitespace-nowrap animate-scrollRightToLeft flex items-center gap-6">
         {repeatedTexts.map((item, index) => (
           <div key={index} className="flex items-center gap-6">
-            <span className="text-lg md:text-2xl font-medium bg-gradient-to-r from-blue-600 to-blue-400 text-transparent bg-clip-text">
+            <span className="text-lg md:text-2xl font-medium bg-gradient-to-r from-[#fd5001] to-[#ff8c00] text-transparent bg-clip-text">
               {item}
             </span>
             <span className="text-white text-3xl leading-none">•</span>

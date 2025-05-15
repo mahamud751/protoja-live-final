@@ -27,7 +27,7 @@ export default function Header() {
 
   const glassVariants = {
     initial: {
-      backgroundColor: "#eaeef1",
+      backgroundColor: "#fff",
       backdropFilter: "blur(0px)",
       borderColor: "rgba(0,0,0,0.08)"
     },
@@ -81,9 +81,9 @@ return (
                     setActive(name);
                     setMobileMenuOpen(false);
                   }}
-                  className={`font-bold px-3 py-1 rounded-full text-sm transition-all duration-150 flex items-center h-8 ${active === name
-                    ? "bg-blue-100 text-blue-600 shadow-inner"
-                    : "text-gray-600 hover:bg-gray-100"
+                  className={`px-3 py-1 rounded-full text-sm transition-all duration-150 flex items-center h-8 font-medium ${active === name
+                    ? "bg-orange-50 text-[#fd5001]"
+                    : "hover:text-[#fd5001] hover:bg-orange-50"
                     }`}
                   style={{ lineHeight: "1.75rem" }}
                 >
@@ -108,7 +108,7 @@ return (
       {/* Right: Let's Talk Button */}
       <a
         href="#projects"
-        className="inline-flex items-center gap-2 border-2 px-5 h-9 rounded-full relative z-50 hover:rounded-xl transition duration-200 bg-blue-600 text-white border-blue-600 hover:bg-blue-700"
+        className="inline-flex items-center gap-2 border-2 border-[#fd5001] px-5 h-9 rounded-full relative z-50 hover:rounded-xl transition duration-200 bg-[#fd5001] text-white font-medium"
       >
         <span className="block px-1">Let's Talk</span>
       </a>
@@ -122,9 +122,9 @@ return (
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100"
+          className="md:hidden bg-[#1a0e1c] backdrop-blur-md border-t border-gray-100"
         >
-          <ul className="flex flex-col px-4 py-2 space-y-2 select-none">
+          <ul className="flex flex-col items-center px-4 py-2 space-y-2 select-none">
             {navLinks.map(({ name, href }) => (
               <li key={name}>
                 <Link
@@ -134,8 +134,8 @@ return (
                     setMobileMenuOpen(false);
                   }}
                   className={`block font-bold px-3 py-2 rounded-md transition-colors duration-150 ${active === name
-                    ? "bg-blue-100 text-blue-600"
-                    : "text-gray-600 hover:bg-gray-100"
+                    ? "text-[#fd5001]"
+                    : "text-white/80"
                     }`}
                 >
                   {name}

@@ -72,7 +72,7 @@ export default function ServiceWhyPartnerSection() {
   }, []);
 
   return (
-    <section className="bg-[#181818] text-white py-20 relative z-0 overflow-hidden">
+    <section className="bg-[#1a0e1c] text-white py-20 relative z-0 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-14 px-4">
         {/* Left: Title + Image */}
         <div className="md:w-1/3 flex flex-col justify-between">
@@ -80,19 +80,6 @@ export default function ServiceWhyPartnerSection() {
             <h2 className="text-4xl md:text-5xl font-bold leading-tight whitespace-pre-line tracking-tight">
               WHY{"\n"}PARTNER{"\n"}WITH{"\n"}MUSEMIND?
             </h2>
-          </div>
-          {/* Decorative SVG */}
-          <div className="hidden md:block mt-auto">
-            <svg width="220" height="120" viewBox="0 0 220 120" fill="none">
-              <ellipse cx="110" cy="60" rx="100" ry="50" fill="#232323" />
-              <g>
-                <rect x="105" y="30" width="10" height="60" rx="5" fill="#2e2e2e" />
-                <rect x="110" y="30" width="5" height="60" rx="2.5" fill="#2e2e2e" transform="rotate(30 110 60)" />
-                <rect x="110" y="30" width="5" height="60" rx="2.5" fill="#2e2e2e" transform="rotate(-30 110 60)" />
-                <rect x="110" y="30" width="5" height="60" rx="2.5" fill="#2e2e2e" transform="rotate(60 110 60)" />
-                <rect x="110" y="30" width="5" height="60" rx="2.5" fill="#2e2e2e" transform="rotate(-60 110 60)" />
-              </g>
-            </svg>
           </div>
         </div>
 
@@ -102,13 +89,13 @@ export default function ServiceWhyPartnerSection() {
             <div
               key={item.title}
               ref={(el) => (cardsRef.current[idx] = el)}
-              className="flex flex-col gap-3 p-6 border border-[#2e2e2e] bg-[#1f1f1f] rounded-xl shadow hover:shadow-lg transition-all duration-300 group"
+              className="flex flex-col gap-3 p-6 border border-[#2e2e2e] rounded-xl shadow hover:bg-white hover:shadow-lg transition-all duration-300 group"
             >
               <div className="flex items-center gap-3">
                 {item.icon}
-                <span className="text-lg font-semibold">{item.title}</span>
+                <span className="text-lg font-semibold group-hover:text-gray-800 duration-200 transition">{item.title}</span>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-100 transition">
+              <p className="text-gray-300 text-sm leading-relaxed group-hover:text-gray-600 duration-200 transition">
                 {item.desc}
               </p>
             </div>
@@ -117,8 +104,8 @@ export default function ServiceWhyPartnerSection() {
       </div>
 
       {/* Glowing gradient background blur */}
-      <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none z-[-1]" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none z-[-1]" />
+      <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-[#fd5001] rounded-full blur-[120px] pointer-events-none z-[-1]" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#fd5001] rounded-full blur-[100px] pointer-events-none z-[-1]" />
 
       {/* Icon glow effect */}
       <style jsx global>{`
