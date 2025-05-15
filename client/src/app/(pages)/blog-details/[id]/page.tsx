@@ -6,7 +6,6 @@ import BlogDetailsHero from "@/components/blogDetails/BlogDetailsHero";
 import LatestBlogs from "@/components/blogDetails/LatestBlogs";
 import mockBlogData from './../../../../data/mockBlogData ';
 
-
 const Page = ({ params }) => {
   const { id } = params;
   const blogMain = mockBlogData.find(blog => blog._id === id);
@@ -21,7 +20,6 @@ const Page = ({ params }) => {
       <BlogDetailsHero blogMain={blogMain} />
       <BlogDetails blogMain={blogMain} />
       <LatestBlogs blogs={latestBlogs} />
-      {/* <Contact page="" /> */}
     </div>
   );
 };
