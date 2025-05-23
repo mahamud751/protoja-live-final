@@ -1,167 +1,74 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import grainImage from "@/assets/images/grain.jpg";
 import mockBlogData from "@/data/mockBlogData ";
 
-gsap.registerPlugin(ScrollTrigger);
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  }),
+};
 
 export default function BlogSection() {
-  const sectionRef = useRef(null);
-  const firstRowImageRefs = useRef([]);
-  const secondRowImageRefs = useRef([]);
-  const containerRef = useRef(null);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const BlogCard = ({ blog, index }) => (
+    <motion.div
+      custom={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={fadeInUp}
+      className="relative z-0 flex flex-col gap-4 rounded-3xl bg-[#1a0e1c] p-4 sm:p-5 md:p-6 shadow-md overflow-hidden transition w-full"
+    >
+      {/* Grain Overlay */}
+      <div
+        className="absolute inset-0 -z-10 opacity-5"
+        style={{ backgroundImage: `url(${grainImage.src})`, backgroundSize: 'cover', backgroundRepeat: 'repeat' }}
+      />
 
-  // Split mock data into two rows for desktop layout
-  const firstRowBlogs = mockBlogData.slice(0, 3);
-  const secondRowBlogs = mockBlogData.slice(3, 6);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (!windowWidth) return;
-
-    const firstRowImages = firstRowImageRefs.current;
-    const secondRowImages = secondRowImageRefs.current;
-
-    const animateRow = (images, rowIndex) => {
-      const totalImages = images.length;
-      const centerIndex = Math.floor(totalImages / 2);
-      const containerWidth = containerRef.current.offsetWidth;
-      const imageWidth = Math.min(500, windowWidth * 0.3);
-      const spacing = Math.min(100, windowWidth * 0.05);
-
-      gsap.set(images, { opacity: 0, x: 0, scale: 0 });
-      gsap.set(images[centerIndex], { opacity: 1, scale: 1 });
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
-          toggleActions: "play reverse play reverse",
-        },
-      });
-
-      tl.to(
-        images,
-        {
-          opacity: 1,
-          scale: 1,
-          x: (index) => {
-            const offset = index - centerIndex;
-            return offset * (imageWidth + spacing);
-          },
-          duration: 1,
-          ease: "power2.out",
-          stagger: 0.1,
-        },
-        rowIndex === 0 ? 0 : 0.5
-      );
-    };
-
-    animateRow(firstRowImages, 0);
-    animateRow(secondRowImages, 1);
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [windowWidth]);
-
-  const setImageRef = (rowRefs) => (el) => {
-    if (el && !rowRefs.current.includes(el)) {
-      rowRefs.current.push(el);
-    }
-  };
-
-  const BlogCard = ({ blog }) => (
-    <div className="relative z-0 flex flex-col gap-4 rounded-3xl bg-[#1a0e1c] p-4 md:p-6 shadow-md overflow-hidden transition"
-      style={{ width: `${Math.min(500, windowWidth * 0.3)}px` }}>
-      <div className="absolute inset-0 -z-10 opacity-5"
-        style={{ backgroundImage: `url(${grainImage.src})` }} />
-      
       <Link href={`/blog-details/${blog._id}`} className="block">
-        <div className="relative w-full h-48 rounded-xl overflow-hidden">
+        <div className="relative w-full h-44 sm:h-52 md:h-56 lg:h-64 rounded-xl overflow-hidden">
           <Image
             src={blog.photos[0]}
             alt={blog.name}
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         </div>
-        <h3 className="text-white text-lg font-semibold mt-4">{blog.name}</h3>
-        <p className="text-white/60 text-sm">{blog.desc}</p>
+        <h3 className="text-white text-lg sm:text-xl font-semibold mt-4">{blog.name}</h3>
+        <p className="text-white/60 text-sm sm:text-base">{blog.desc}</p>
       </Link>
-    </div>
+    </motion.div>
   );
 
   return (
-    <div className="p-4 lg:py-16 w-full" ref={sectionRef}>
-      <div className="text-center">
-        <p className="uppercase font-semibold tracking-widest text-[#1A0E1C] text-center">
-          Our Blog
-        </p>
-        <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-[#fd5001]">
-          Latest Trends and Updates
-        </h2>
-      </div>
+    <section className="py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 bg-white w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-28">
+        <div className="text-center mb-12 md:mb-16">
+          <p className="uppercase font-semibold tracking-widest text-[#1A0E1C]">
+            Our Blog
+          </p>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl mt-4 text-[#fd5001]">
+            Latest Trends and Updates
+          </h2>
+        </div>
 
-      {windowWidth <= 768 ? (
-        <div className="flex flex-col gap-6 mt-12">
-          {mockBlogData.map((blog) => (
-            <BlogCard key={blog._id} blog={blog} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {mockBlogData.map((blog, index) => (
+            <BlogCard key={blog._id} blog={blog} index={index} />
           ))}
         </div>
-      ) : (
-        <div
-          ref={containerRef}
-          className="relative w-full flex flex-col justify-center items-center overflow-hidden"
-          style={{
-            height: windowWidth > 1440 ? "1000px" : "1200px",
-            gap: windowWidth > 1440 ? "150px" : "200px",
-          }}
-        >
-          {/* First Row */}
-          <div className="relative w-full flex justify-center items-center">
-            {firstRowBlogs.map((blog) => (
-              <div
-                key={blog._id}
-                ref={setImageRef(firstRowImageRefs)}
-                className="absolute"
-              >
-                <BlogCard blog={blog} />
-              </div>
-            ))}
-          </div>
-
-          {/* Second Row */}
-          <div className="relative w-full flex justify-center items-center mt-[300px]">
-            {secondRowBlogs.map((blog) => (
-              <div
-                key={blog._id}
-                ref={setImageRef(secondRowImageRefs)}
-                className="absolute"
-              >
-                <BlogCard blog={blog} />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }

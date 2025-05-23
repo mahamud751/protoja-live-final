@@ -82,7 +82,7 @@ const expertiseFields = [
 
 const ExpertiseSection = () => {
   return (
-    <section className="pb-16 lg:py-24">
+    <section className="px-4 md:px-8 py-12 pt-16">
       <div className="container mx-auto">
         <div className="flex justify-center">
           <p className="uppercase font-semibold tracking-widest text-[#1A0E1C] text-center">
@@ -97,7 +97,7 @@ const ExpertiseSection = () => {
           {expertiseFields.map((project, index) => (
             <div
               key={project.title}
-              className="bg-[#1a0e1c] rounded-3xl relative z-0 p-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 overflow-hidden border-2 border-white/20"
+              className="bg-[#1a0e1c] rounded-3xl relative z-0 p-6 sm:p-8 md:p-10 lg:pt-16 lg:px-20 overflow-hidden border-2 border-white/20"
               style={{
                 top: `calc(64px + ${index * 40}px)`,
                 position: "sticky",
@@ -107,10 +107,10 @@ const ExpertiseSection = () => {
                 className="absolute inset-0 -z-10 opacity-5"
                 style={{ backgroundImage: `url(${grainImage.src})` }}
               ></div>
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16 relative z-10">
-                <div className="lg:pb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 relative z-10">
+                <div className="pb-10 lg:pb-16">
                   {project.labels && (
-                    <div className="bg-gradient-to-r from-[#fd5001] to-[#ff8c00] inline-flex gap-2 md:uppercase font-bold tracking-widest text-xs md:text-sm text-transparent bg-clip-text">
+                    <div className="bg-gradient-to-r from-[#fd5001] to-[#ff8c00] inline-flex flex-wrap gap-2 md:uppercase font-bold tracking-widest text-xs md:text-sm text-transparent bg-clip-text">
                       {project.labels.map((label, i) => (
                         <span key={i}>
                           {label}
@@ -120,17 +120,17 @@ const ExpertiseSection = () => {
                     </div>
                   )}
 
-                  <h3 className="font-serif text-2xl md:text-4xl mt-2 md:mt-5 text-white">
+                  <h3 className="font-serif text-2xl md:text-4xl mt-3 text-white">
                     {project.title}
                   </h3>
-                  <hr className="border-t-2 border-white/5 mt-4 md:mt-5" />
-                  <ul className="flex flex-col gap-4 mt-4 md:mt-5">
+                  <hr className="border-t-2 border-white/5 mt-4" />
+                  <ul className="flex flex-col gap-3 mt-4">
                     {project.results.map((res) => (
                       <li
                         key={res.title}
-                        className="flex gap-2 text-sm md:text-base text-white/50"
+                        className="flex gap-2 text-sm md:text-base text-white/60"
                       >
-                        <BadgeCheck className="w-4 h-4" />
+                        <BadgeCheck className="w-4 h-4 shrink-0" />
                         <span>{res.title}</span>
                       </li>
                     ))}
@@ -150,13 +150,13 @@ const ExpertiseSection = () => {
                   )}
                 </div>
 
-                <div className="relative">
+                <div className="relative mt-8 lg:mt-0 flex justify-center lg:justify-end">
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={640}
                     height={480}
-                    className="mt-8 -mb-4 md:mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"
+                    className="w-full max-w-[360px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-none lg:h-full object-contain rounded-xl"
                   />
                 </div>
               </div>
@@ -169,3 +169,4 @@ const ExpertiseSection = () => {
 };
 
 export default ExpertiseSection;
+

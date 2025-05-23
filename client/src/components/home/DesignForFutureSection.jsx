@@ -37,11 +37,6 @@ const StarIcon = () => (
     </svg>
 );
 
-const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
-
 const Card = ({ Icon, title, description }) => (
     <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -52,7 +47,7 @@ const Card = ({ Icon, title, description }) => (
     >
         <div
             className="absolute inset-0 -z-10 opacity-5"
-            style={{ backgroundImage: `url(${grainImage.src})` }}
+            style={{ backgroundImage: `url(${grainImage.src})`, backgroundSize: 'cover' }}
         />
         <div>
             <Icon />
@@ -66,52 +61,44 @@ const Card = ({ Icon, title, description }) => (
 
 const DesignForFutureSection = () => {
     return (
-        <section className="bg-[#1a0e1c]">
-            <div className="max-w-7xl mx-auto px-6 lg:py-24">
-                <div>
-                    <p className="uppercase font-semibold tracking-widest text-white text-center">
-                        Why Choose Us
-                    </p>
+        <section className="bg-[#1a0e1c] py-16 md:py-20 lg:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="text-center">
+                    <p className="uppercase font-semibold tracking-widest text-white">Why Choose Us</p>
+                    <h2 className="font-serif text-3xl md:text-5xl mt-6 text-[#fd5001]">
+                        We Design for the Future to <br className="hidden md:block" />
+                        Drive Today’s Success
+                    </h2>
                 </div>
 
-                <h2 className="font-serif text-3xl md:text-5xl text-center mt-6 text-[#fd5001]">
-                    We Design for the Future to <br />
-                    Drive Today’s Success
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 mt-10 md:mt-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 md:mt-20">
                     <Card
                         Icon={InfinityIcon}
                         title="Unlimited Revisions"
                         description="We’re committed to your satisfaction with unlimited revisions at every step. Our mission is to make your vision come to life exactly as you imagine."
-                        delay={0}
                     />
                     <Card
                         Icon={UserIcon}
                         title="Lifetime Support"
                         description="With our lifetime support, you’re never alone. We’ll be there for you at every stage with necessary guidance and assistance whenever you need it."
-                        delay={0.1}
                     />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 md:mt-16">
                     <Card
                         Icon={DollarIcon}
                         title="Personalised Plans"
                         description="Get top-quality service without breaking the bank. Our rates are designed to fit your budget so that you can get the best value for your investment."
-                        delay={0.2}
                     />
                     <Card
                         Icon={PieChartIcon}
                         title="Custom Design Solutions"
                         description="Our easy payment options are completely flexible. So, you can invest in your success while staying within your budget."
-                        delay={0.3}
                     />
                     <Card
                         Icon={StarIcon}
                         title="24/7 Customer Support"
                         description="Benefit from the expertise of our carefully chosen resources that are designed to make your journey smooth and effortless with outstanding results."
-                        delay={0.4}
                     />
                 </div>
             </div>

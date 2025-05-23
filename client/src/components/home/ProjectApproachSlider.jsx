@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import grainImage from "@/assets/images/grain.jpg";
@@ -30,32 +30,74 @@ const steps = [
 
 export default function ProjectApproach() {
     const [startIndex, setStartIndex] = useState(0);
+    const [maxVisible, setMaxVisible] = useState(3);
+    const [direction, setDirection] = useState(0); 
 
     const totalSteps = steps.length;
-    const maxVisible = 3;
 
-    const next = () => {
+    useEffect(() => {
+        const updateMaxVisible = () => {
+            if (window.innerWidth < 640) {
+                setMaxVisible(1);
+            } else if (window.innerWidth < 1024) {
+                setMaxVisible(2);
+            } else {
+                setMaxVisible(3);
+            }
+        };
+
+        updateMaxVisible(); 
+        window.addEventListener('resize', updateMaxVisible);
+        return () => window.removeEventListener('resize', updateMaxVisible);
+    }, []);
+
+    const handleNext = () => {
+        setDirection(1);
         setStartIndex((prev) => (prev + 1) % totalSteps);
     };
 
-    const prev = () => {
+    const handlePrev = () => {
+        setDirection(-1);
         setStartIndex((prev) => (prev - 1 + totalSteps) % totalSteps);
     };
 
-    const visibleSteps = steps
-        .slice(startIndex, startIndex + maxVisible)
-        .concat(steps.slice(0, Math.max(0, startIndex + maxVisible - totalSteps)));
+    // Calculate the steps to display, handling wrap-around
+    const visibleSteps = [];
+    if (totalSteps > 0) {
+        for (let i = 0; i < maxVisible; i++) {
+            const stepIndex = (startIndex + i) % totalSteps;
+            visibleSteps.push(steps[stepIndex]);
+        }
+    }
+    
+    // Animation variants for the group of cards
+    const groupVariants = {
+        initial: (customDirection) => ({
+            opacity: 0,
+            x: customDirection === 0 ? 0 : (customDirection === 1 ? '30%' : '-30%'),
+        }),
+        animate: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+        },
+        exit: (customDirection) => ({
+            opacity: 0,
+            x: customDirection === 1 ? '-30%' : '30%',
+            transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+        }),
+    };
 
     return (
-        <section className="text-white bg-[#1a0e1c] lg:py-24 relative overflow-hidden">
+        <section className="text-white bg-[#1a0e1c] lg:py-24 py-16 relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 text-center">
                 {/* Subtitle with ping */}
                 <div className="flex justify-center items-center gap-2 mb-4">
-                    <span className="relative flex h-4 w-4">
+                    <span className="relative flex h-3 w-3 sm:h-4 sm:w-4">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fe9667] opacity-75" />
-                        <span className="relative inline-flex rounded-full h-4 w-4 bg-[#fd5001]" />
+                        <span className="relative inline-flex rounded-full h-3 w-3 sm:h-4 sm:w-4 bg-[#fd5001]" />
                     </span>
-                    <p className="uppercase font-semibold tracking-widest text-white text-center">
+                    <p className="uppercase font-semibold tracking-widest text-white text-xs sm:text-sm text-center">
                         Our Approach
                     </p>
                 </div>
@@ -67,46 +109,57 @@ export default function ProjectApproach() {
                 </h2>
             </div>
 
-            {/* Slider */}
-            <div className="relative max-w-6xl mx-auto px-4 mt-20">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <AnimatePresence mode="wait">
-                        {visibleSteps.map((step, index) => (
-                            <motion.div
-                                key={step.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 0.4, delay: index * 0.1 }}
-                                className="relative z-0 flex flex-col gap-6 rounded-3xl border-2 border-white/20 p-6 md:p-10 lg:p-12 shadow-md overflow-hidden transition hover:bg-white duration-300 group"
-                            >
-                                {/* Grain effect background */}
+            {/* Slider Container */}
+            <div className="relative max-w-6xl mx-auto px-4 mt-12 sm:mt-16 md:mt-20">
+                <AnimatePresence mode="wait" custom={direction}>
+                    <motion.div
+                        key={startIndex} 
+                        custom={direction} 
+                        variants={groupVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        className="min-h-[300px] sm:min-h-[350px]" 
+                    >
+                        <div className={`grid grid-cols-1 ${maxVisible === 2 ? 'sm:grid-cols-2' : ''} ${maxVisible === 3 ? 'lg:grid-cols-3' : ''} gap-4 sm:gap-6`}>
+                            {visibleSteps.map((step, index) => (
                                 <div
-                                    className="absolute inset-0 -z-10 opacity-5"
-                                    style={{ backgroundImage: `url(${grainImage.src})`, backgroundSize: 'cover' }}
-                                />
-                                <div>
-                                    <h3 className="text-xl md:text-2xl font-semibold text-white mb-2 group-hover:text-black">{step.title}</h3>
-                                    <p className="text-sm md:text-base text-white/50 group-hover:text-black/60">{step.description}</p>
+                                    key={step.title + '-' + index} 
+                                    className="relative z-0 flex flex-col gap-4 sm:gap-6 rounded-2xl sm:rounded-3xl border-2 border-white/10 hover:border-white/30 p-6 md:p-8 lg:p-10 shadow-lg hover:shadow-[#fd5001]/20 overflow-hidden transition-all duration-300 ease-in-out group hover:bg-white/5"
+                                >
+                                    {/* Grain effect background */}
+                                    <div
+                                        className="absolute inset-0 -z-10 opacity-5 group-hover:opacity-10 transition-opacity"
+                                        style={{ backgroundImage: `url(${grainImage.src})`, backgroundSize: 'cover' }}
+                                    />
+                                    <div>
+                                        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-white mb-2 group-hover:text-[#fd5001] transition-colors duration-300">{step.title}</h3>
+                                        <p className="text-sm md:text-base text-white/60 group-hover:text-white/80 transition-colors duration-300">{step.description}</p>
+                                    </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
 
-                {/* Arrows */}
-                <button
-                    onClick={prev}
-                    className="absolute -left-4 md:-left-8 top-1/2 transform -translate-y-1/2 z-10 bg-[#fe9667] hover:bg-[#fd5001] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
-                >
-                    <ArrowLeft size={24} />
-                </button>
-                <button
-                    onClick={next}
-                    className="absolute -right-4 md:-right-8 top-1/2 transform -translate-y-1/2 z-10 bg-[#fe9667] hover:bg-[#fd5001] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition"
-                >
-                    <ArrowRight size={24} />
-                </button>
+                <div className="absolute top-1/2 left-0 right-0 flex justify-between items-center px-0 sm:px-2 md:px-4 transform -translate-y-1/2 z-10">
+                    <button
+                        onClick={handlePrev}
+                        aria-label="Previous Step"
+                        className="bg-[#fe9667]/80 hover:bg-[#fd5001] text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#fd5001] focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={totalSteps <= maxVisible} 
+                    >
+                        <ArrowLeft size={20} />
+                    </button>
+                    <button
+                        onClick={handleNext}
+                        aria-label="Next Step"
+                        className="bg-[#fe9667]/80 hover:bg-[#fd5001] text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#fd5001] focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled={totalSteps <= maxVisible} 
+                    >
+                        <ArrowRight size={20} />
+                    </button>
+                </div>
             </div>
         </section>
     );

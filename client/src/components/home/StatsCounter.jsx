@@ -44,13 +44,13 @@ const stats = [
 
 export default function StatsCounter() {
   return (
-    <section className="lg:py-32 bg-[#1a0e1c]">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-5xl font-light mb-16 leading-tight text-[#fd5001]">
+    <section className="bg-[#1a0e1c] py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-28 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-10 sm:mb-12 md:mb-16 leading-tight text-[#fd5001]">
           <span className="italic font-serif">Our</span>{' '}
           <span className="font-semibold">STORY, BY NUMBERS</span>
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
           {stats.map(({ label, value, suffix }, idx) => (
             <StatBlock
               key={label}
@@ -69,7 +69,7 @@ export default function StatsCounter() {
 function StatBlock({ label, value, suffix, delay }) {
   const { ref, inView } = useInView({
     threshold: 0.3,
-    triggerOnce: false, // allow reset
+    triggerOnce: false,
   });
 
   const count = useCountUp(inView, value, 1200);
@@ -77,7 +77,7 @@ function StatBlock({ label, value, suffix, delay }) {
   return (
     <div
       ref={ref}
-      className="relative flex flex-col items-center justify-center text-center p-6 rounded-2xl border-2 border-white/20 shadow-md overflow-hidden opacity-0 animate-fade-in-up"
+      className="relative flex flex-col items-center justify-center text-center p-4 sm:p-5 md:p-6 lg:p-8 rounded-2xl border-2 border-white/20 shadow-md overflow-hidden opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
     >
       {/* Grain overlay */}
@@ -90,11 +90,11 @@ function StatBlock({ label, value, suffix, delay }) {
         }}
       ></div>
 
-      <span className="text-4xl md:text-5xl font-bold tabular-nums tracking-tight text-white text-center">
+      <span className="text-3xl sm:text-4xl md:text-5xl font-bold tabular-nums tracking-tight text-white">
         {count}
         {suffix}
       </span>
-      <span className="mt-2 text-base text-white/50 font-medium">{label}</span>
+      <span className="mt-1 sm:mt-2 text-sm sm:text-base text-white/60 font-medium">{label}</span>
     </div>
   );
 }

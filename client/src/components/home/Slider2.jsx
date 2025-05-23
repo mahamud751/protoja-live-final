@@ -12,17 +12,20 @@ const slideList = [
 ];
 
 const Slider2 = () => {
-  const slides = [...slideList, ...slideList]; 
+  const slides = [...slideList, ...slideList];
 
   return (
-    <div className="overflow-hidden w-full py-10">
-      <div className="flex animate-scrollRightToLeft gap-6 w-[max-content]">
+    <div className="overflow-hidden w-full py-6 sm:py-8 md:py-10">
+      <div className="flex animate-scrollRightToLeft gap-4 sm:gap-6 w-[max-content]">
         {slides.map(({ id, img }) => (
-          <div key={id} className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg">
+          <div
+            key={id}
+            className="flex-shrink-0 rounded-xl overflow-hidden shadow-md sm:shadow-lg"
+          >
             <img
               src={img}
               alt={`slide ${id}`}
-              className="w-auto h-[300px] object-cover rounded-xl"
+              className="w-[150px] sm:w-[180px] md:w-[220px] lg:w-[260px] h-[160px] sm:h-[200px] md:h-[240px] lg:h-[300px] object-cover rounded-xl"
             />
           </div>
         ))}
