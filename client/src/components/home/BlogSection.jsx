@@ -20,6 +20,9 @@ const fadeInUp = {
 };
 
 export default function BlogSection() {
+  // Get first 6 blog posts
+  const displayedBlogs = mockBlogData.slice(0, 6);
+
   const BlogCard = ({ blog, index }) => (
     <motion.div
       custom={index}
@@ -64,7 +67,7 @@ export default function BlogSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {mockBlogData.map((blog, index) => (
+          {displayedBlogs.map((blog, index) => (
             <BlogCard key={blog._id} blog={blog} index={index} />
           ))}
         </div>
